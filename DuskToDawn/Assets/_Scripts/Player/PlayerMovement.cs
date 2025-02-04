@@ -9,9 +9,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection;
     public NewControls movePlayer;
     private InputAction movement;
+    private InputAction dash;
 
     [SerializeField]
-    private float moveSpeed;
+    private float moveSpeed, dashSpeed, dashTime;
 
     Vector3 mousePosition;
     Vector3 lookDirection;
@@ -24,8 +25,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
+        //set up movement
         movement = movePlayer.Player.Movement;
         movement.Enable();
+
+        //set up Shooting
+        dash = movePlayer.Player.Dash;
+        dash.Enable();
+        dash.performed += DodgeRoll;
     }
 
     private void OnDisable()
@@ -54,8 +61,25 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void PlayerTurn()
+    private void DodgeRoll(InputAction.CallbackContext context)
     {
+        Debug.Log("Dash");
+        float temp = moveSpeed;
+        StartCoroutine(Dash());
+        moveSpeed = temp;
+    }
 
+    private IEnumerator Dash()
+    {
+        float startTime = Time.time;
+        float temp = moveSpeed;
+
+        while(Time.time < startTime + dashTime) 
+        {
+            moveSpeed = dashSpeed;
+
+            yield return null;
+            moveSpeed = temp;
+        }
     }
 }
