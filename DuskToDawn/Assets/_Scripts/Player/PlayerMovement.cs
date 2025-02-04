@@ -38,6 +38,20 @@ public class PlayerMovement : MonoBehaviour
     {
         moveDirection = movement.ReadValue<Vector2>();
         transform.position += new Vector3(moveDirection.x, 0, moveDirection.y) * Time.deltaTime * moveSpeed;
+
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+
+        {
+
+            lookDirection = hit.point - transform.position;
+
+            transform.LookAt(hit.point);
+        }
+
     }
 
     private void PlayerTurn()
