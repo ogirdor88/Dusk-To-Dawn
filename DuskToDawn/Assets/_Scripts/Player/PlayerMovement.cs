@@ -9,9 +9,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection;
     public NewControls movePlayer;
     private InputAction movement;
+    private InputAction dash;
 
     [SerializeField]
-    private float moveSpeed;
+    private float moveSpeed, dashSpeed, dashTime;
 
     Vector3 mousePosition;
     Vector3 lookDirection;
@@ -24,8 +25,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnEnable()
     {
+        //set up movement
         movement = movePlayer.Player.Movement;
         movement.Enable();
+
+        //set up Shooting
+        dash = movePlayer.Player.Dash;
+        dash.Enable();
+        dash.performed += DodgeRoll;
     }
 
     private void OnDisable()
@@ -39,11 +46,40 @@ public class PlayerMovement : MonoBehaviour
         moveDirection = movement.ReadValue<Vector2>();
         transform.position += new Vector3(moveDirection.x, 0, moveDirection.y) * Time.deltaTime * moveSpeed;
 
-        //get the mouse postion on the screen and have the player turn towards it
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        lookDirection = mousePosition - transform.position;
-        lookDirection.y = 0; // Optional: Flatten the y-axis to prevent looking up/down
-        transform.LookAt(transform.position + lookDirection);
 
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+
+        {
+
+            lookDirection = hit.point - transform.position;
+
+            transform.LookAt(hit.point);
+        }
+
+    }
+
+    private void DodgeRoll(InputAction.CallbackContext context)
+    {
+        Debug.Log("Dash");
+        float temp = moveSpeed;
+        StartCoroutine(Dash());
+        moveSpeed = temp;
+    }
+
+    private IEnumerator Dash()
+    {
+        float startTime = Time.time;
+        float temp = moveSpeed;
+
+        while(Time.time < startTime + dashTime) 
+        {
+            moveSpeed = dashSpeed;
+
+            yield return null;
+            moveSpeed = temp;
+        }
     }
 }
