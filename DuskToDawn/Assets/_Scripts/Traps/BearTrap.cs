@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class BearTrap : MonoBehaviour
@@ -8,6 +9,7 @@ public class BearTrap : MonoBehaviour
     private float damage, holdTime;
 
     private bool holding;
+    private float playerspeed;
 
     private void Awake()
     {
@@ -15,6 +17,7 @@ public class BearTrap : MonoBehaviour
         this.GetComponent<Renderer>().material.color = Color.green;
 
         holding = false;
+        playerspeed = 
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,6 +25,19 @@ public class BearTrap : MonoBehaviour
         if (other.tag == "Player")
         {
             Debug.Log("Trapped");
+            holding = true;
+            if(holding)
+            {
+                other.gameObject.transform.position = this.transform.position;
+            }
+            StartCoroutine(Grabbed());
+
         }
+    }
+
+    private IEnumerator Grabbed()
+    {
+        yield return new WaitForSeconds(holdTime);
+        holding=false;
     }
 }
