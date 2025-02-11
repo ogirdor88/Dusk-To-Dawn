@@ -14,6 +14,7 @@ public class GlassTrap : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
+        //if the player touches the glass trap they will start to take damage per second while they are standing on the trap
         if(other.tag == "Player")
         {
             PlayerMovement.health = PlayerMovement.health - (damage * Time.deltaTime);

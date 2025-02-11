@@ -17,11 +17,17 @@ public class BearTrap : MonoBehaviour
         this.GetComponent<Renderer>().material.color = Color.green;
 
         holding = false;
+
+        //save the players move speed for later
         playerspeed = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().moveSpeed;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        //if the player steps in the trap
+        //damage the player
+        //change the players position to the center of the trap
+        //start a timer for how long the player will be stuck in the trap
         if (other.tag == "Player")
         {
             Debug.Log("Trapped");
@@ -36,6 +42,7 @@ public class BearTrap : MonoBehaviour
         }
     }
 
+    //after the player leaves the trap have it disapear so that they dont step in the dissarmed trap
     private void OnTriggerExit(Collider other)
     {
         this.gameObject.SetActive(false);
