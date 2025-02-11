@@ -17,7 +17,7 @@ public class BearTrap : MonoBehaviour
         this.GetComponent<Renderer>().material.color = Color.green;
 
         holding = false;
-        //playerspeed = 
+        playerspeed = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().moveSpeed;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,7 +37,9 @@ public class BearTrap : MonoBehaviour
 
     private IEnumerator Grabbed()
     {
+        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().moveSpeed = 0;
         yield return new WaitForSeconds(holdTime);
-        holding=false;
+        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().moveSpeed = playerspeed;
+        holding =false;
     }
 }

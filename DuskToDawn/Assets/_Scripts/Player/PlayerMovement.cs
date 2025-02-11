@@ -11,8 +11,11 @@ public class PlayerMovement : MonoBehaviour
     private InputAction movement;
     private InputAction dash;
 
+
+    public float moveSpeed;
+
     [SerializeField]
-    private float moveSpeed, dashSpeed, dashTime;
+    private float dashSpeed, dashTime;
 
     Vector3 mousePosition;
     Vector3 lookDirection;
