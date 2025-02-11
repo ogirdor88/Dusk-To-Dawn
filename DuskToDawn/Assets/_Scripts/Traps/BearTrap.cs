@@ -17,7 +17,7 @@ public class BearTrap : MonoBehaviour
         this.GetComponent<Renderer>().material.color = Color.green;
 
         holding = false;
-        playerspeed = 
+        //playerspeed = 
     }
 
     private void OnTriggerEnter(Collider other)
