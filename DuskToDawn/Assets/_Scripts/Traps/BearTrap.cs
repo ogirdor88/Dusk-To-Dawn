@@ -26,13 +26,19 @@ public class BearTrap : MonoBehaviour
         {
             Debug.Log("Trapped");
             holding = true;
-            if(holding)
+            PlayerMovement.health = PlayerMovement.health - damage;
+            Debug.Log(PlayerMovement.health);
+            if (holding)
             {
                 other.gameObject.transform.position = this.transform.position;
             }
             StartCoroutine(Grabbed());
-
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        this.gameObject.SetActive(false);
     }
 
     private IEnumerator Grabbed()
