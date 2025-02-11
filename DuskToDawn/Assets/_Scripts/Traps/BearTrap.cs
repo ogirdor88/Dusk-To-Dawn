@@ -50,6 +50,9 @@ public class BearTrap : MonoBehaviour
 
     private IEnumerator Grabbed()
     {
+        //set the players speed to 0 so they cant move
+        //wait for the time to run out
+        //set the players move speed back to the original speed
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().moveSpeed = 0;
         yield return new WaitForSeconds(holdTime);
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().moveSpeed = playerspeed;
