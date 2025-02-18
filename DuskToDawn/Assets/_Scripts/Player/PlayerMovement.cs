@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
+using System;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,6 +21,9 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     private float dashSpeed, dashTime;
+
+    [SerializeField]
+    private TMP_Text healthText;
 
     Vector3 mousePosition;
     Vector3 lookDirection;
@@ -49,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        SetHealth();
         if(health <= 0)
         {
             transform.position = starting;
@@ -65,10 +72,16 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
 
         {
+            if (hit.collider.CompareTag("Ground"))
+            {
+                lookDirection = hit.point - transform.position;
+                lookDirection.y = 0;
 
-            lookDirection = hit.point - transform.position;
+                transform.LookAt(hit.point);
+            }
+            /*lookDirection = hit.point - transform.position;
 
-            transform.LookAt(hit.point);
+            transform.LookAt(hit.point);*/
         }
 
     }
@@ -93,5 +106,10 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
             moveSpeed = temp;
         }
+    }
+
+    private void SetHealth()
+    {
+        healthText.SetText("Player Health:" + Convert.ToInt32(health));
     }
 }
