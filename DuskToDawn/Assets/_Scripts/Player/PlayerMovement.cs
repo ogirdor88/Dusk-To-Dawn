@@ -11,8 +11,13 @@ public class PlayerMovement : MonoBehaviour
     private InputAction movement;
     private InputAction dash;
 
+    private Vector3 starting;
+
+    public float moveSpeed;
+    public static float health = 100;
+
     [SerializeField]
-    private float moveSpeed, dashSpeed, dashTime;
+    private float dashSpeed, dashTime;
 
     Vector3 mousePosition;
     Vector3 lookDirection;
@@ -21,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         movePlayer = new NewControls();
+        starting = transform.position;
     }
 
     private void OnEnable()
@@ -43,6 +49,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if(health <= 0)
+        {
+            transform.position = starting;
+            health = 100;
+        }
+
         moveDirection = movement.ReadValue<Vector2>();
         transform.position += new Vector3(moveDirection.x, 0, moveDirection.y) * Time.deltaTime * moveSpeed;
 
