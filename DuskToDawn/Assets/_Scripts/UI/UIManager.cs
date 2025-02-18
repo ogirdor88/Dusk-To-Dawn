@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public static UIManager Instance { get; private set; }
+
+    private void Awake()
     {
-        
+        if (Instance == null)
+        {
+           Instance = this;
+
+        } else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddScore()
     {
-        
+        Debug.Log("Test");
     }
+
+    public void turnPauseMenuON(GameObject UI_pc)
+    {
+        UI_pc.SetActive(true);
+    }
+
+    public void turnPauseMenuOFF(GameObject UI_pc)
+    {
+        UI_pc.SetActive(false);
+    }
+
+
+
+
+
 }
