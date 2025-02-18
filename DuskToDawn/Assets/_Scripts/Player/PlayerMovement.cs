@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
                 lookDirection = hit.point - transform.position;
                 lookDirection.y = 0;
 
-                transform.LookAt(hit.point);
+                transform.LookAt(new Vector3(lookDirection.x, transform.position.y, lookDirection.z));
             }
             /*lookDirection = hit.point - transform.position;
 
