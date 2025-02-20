@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 using System;
 using UnityEngine.Rendering.Universal;
+using UnityEditor.VersionControl;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public NewControls movePlayer;
     private InputAction movement;
     private InputAction dash;
+    private InputAction pow;
 
     private Vector3 starting;
 
@@ -27,6 +29,9 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 mousePosition;
     Vector3 lookDirection;
+
+    [SerializeField]
+    private GameObject bullet;
 
 
     private void Awake()
@@ -45,11 +50,18 @@ public class PlayerMovement : MonoBehaviour
         dash = movePlayer.Player.Dash;
         dash.Enable();
         dash.performed += DodgeRoll;
+
+        //set up the attack button
+        pow = movePlayer.Player.Attack;
+        pow.Enable();
+        pow.performed += DamageTime;
     }
 
     private void OnDisable()
     {
         movement.Disable();
+        dash.Disable();
+        pow.Disable();
     }
 
 
@@ -111,5 +123,15 @@ public class PlayerMovement : MonoBehaviour
     private void SetHealth()
     {
         healthText.SetText("Player Health:" + Convert.ToInt32(health));
+    }
+
+    private void DamageTime(InputAction.CallbackContext context )
+    {
+        Shooting();
+    }
+
+    private void Shooting()
+    {
+        Instantiate(bullet, transform.position, transform.rotation);
     }
 }
