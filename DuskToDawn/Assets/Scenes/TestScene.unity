@@ -1434,6 +1434,11 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 978809228}
+    - target: {fileID: 2975150438442192379, guid: fc1ceff2ac0666f4595debed8e32a5ea,
+        type: 3}
+      propertyPath: shootDelay
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3061006335421986071, guid: fc1ceff2ac0666f4595debed8e32a5ea,
         type: 3}
       propertyPath: m_LocalPosition.x

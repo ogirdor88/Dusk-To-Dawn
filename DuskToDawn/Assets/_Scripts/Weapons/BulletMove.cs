@@ -11,5 +11,12 @@ public class BulletMove : MonoBehaviour
     void Update()
     {
         transform.position += transform.forward * bulletSpeed * Time.deltaTime;
+        StartCoroutine(DestroyBullet());
+    }
+
+    private IEnumerator DestroyBullet()
+    {
+        yield return new WaitForSeconds(5);
+        Destroy( this.gameObject);
     }
 }

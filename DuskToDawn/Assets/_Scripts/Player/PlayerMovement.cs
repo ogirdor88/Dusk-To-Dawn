@@ -22,22 +22,24 @@ public class PlayerMovement : MonoBehaviour
     public static float health = 100;
 
     [SerializeField]
-    private float dashSpeed, dashTime;
+    private float dashSpeed, dashTime, shootDelay;
 
     [SerializeField]
     private TMP_Text healthText;
 
-    Vector3 mousePosition;
     Vector3 lookDirection;
 
     [SerializeField]
     private GameObject bullet;
+
+    private bool shooting;
 
 
     private void Awake()
     {
         movePlayer = new NewControls();
         starting = transform.position;
+        shooting = false;
     }
 
     private void OnEnable()
@@ -127,11 +129,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void DamageTime(InputAction.CallbackContext context )
     {
-        Shooting();
+        Gunshots();
     }
 
-    private void Shooting()
+    private void Gunshots()
     {
-        Instantiate(bullet, transform.position, transform.rotation);
+        if(!shooting)
+        {
+            StartCoroutine(Shooting());
+        }
     }
+    private IEnumerator Shooting()
+    {
+        shooting = true;
+        Instantiate(bullet, transform.position, transform.rotation);
+        yield return new WaitForSeconds(shootDelay);
+        shooting = false;
+    }
+
 }
