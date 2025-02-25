@@ -152,6 +152,9 @@ MonoBehaviour:
   moveSpeed: 10
   dashSpeed: 50
   dashTime: 0.1
+  shootDelay: 0.5
+  healthText: {fileID: 0}
+  bullet: {fileID: 395185365152040421, guid: 59a2e1ba706a3f94b91f4feff7b08246, type: 3}
 --- !u!1 &5999462448710672593
 GameObject:
   m_ObjectHideFlags: 0

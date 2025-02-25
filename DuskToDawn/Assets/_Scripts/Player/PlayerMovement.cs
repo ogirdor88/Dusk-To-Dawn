@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using TMPro;
 using System;
 using UnityEngine.Rendering.Universal;
+using UnityEditor.VersionControl;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public NewControls movePlayer;
     private InputAction movement;
     private InputAction dash;
+    private InputAction pow;
 
     private Vector3 starting;
 
@@ -20,19 +22,24 @@ public class PlayerMovement : MonoBehaviour
     public static float health = 100;
 
     [SerializeField]
-    private float dashSpeed, dashTime;
+    private float dashSpeed, dashTime, shootDelay;
 
     [SerializeField]
     private TMP_Text healthText;
 
-    Vector3 mousePosition;
     Vector3 lookDirection;
+
+    [SerializeField]
+    private GameObject bullet;
+
+    private bool shooting;
 
 
     private void Awake()
     {
         movePlayer = new NewControls();
         starting = transform.position;
+        shooting = false;
     }
 
     private void OnEnable()
@@ -45,11 +52,18 @@ public class PlayerMovement : MonoBehaviour
         dash = movePlayer.Player.Dash;
         dash.Enable();
         dash.performed += DodgeRoll;
+
+        //set up the attack button
+        pow = movePlayer.Player.Attack;
+        pow.Enable();
+        pow.performed += DamageTime;
     }
 
     private void OnDisable()
     {
         movement.Disable();
+        dash.Disable();
+        pow.Disable();
     }
 
 
@@ -112,4 +126,25 @@ public class PlayerMovement : MonoBehaviour
     {
         healthText.SetText("Player Health:" + Convert.ToInt32(health));
     }
+
+    private void DamageTime(InputAction.CallbackContext context )
+    {
+        Gunshots();
+    }
+
+    private void Gunshots()
+    {
+        if(!shooting)
+        {
+            StartCoroutine(Shooting());
+        }
+    }
+    private IEnumerator Shooting()
+    {
+        shooting = true;
+        Instantiate(bullet, transform.position, transform.rotation);
+        yield return new WaitForSeconds(shootDelay);
+        shooting = false;
+    }
+
 }
