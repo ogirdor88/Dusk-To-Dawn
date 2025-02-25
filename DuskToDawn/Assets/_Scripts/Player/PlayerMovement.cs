@@ -25,14 +25,16 @@ public class PlayerMovement : MonoBehaviour
     private float dashSpeed, dashTime, shootDelay;
 
     [SerializeField]
-    private TMP_Text healthText;
+    private TMP_Text healthText, ammoText;
 
     Vector3 lookDirection;
 
+    //Gun Variables
     [SerializeField]
     private GameObject bullet;
-
     private bool shooting;
+    public int shots;
+    private int OriginalShots;
 
 
     private void Awake()
@@ -40,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         movePlayer = new NewControls();
         starting = transform.position;
         shooting = false;
+        OriginalShots = shots;
     }
 
     private void OnEnable()
@@ -69,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        SetHealth();
+        SetText();
         if(health <= 0)
         {
             transform.position = starting;
@@ -86,13 +89,10 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(ray, out hit))
 
         {
-            if (hit.collider.CompareTag("Ground"))
-            {
-                lookDirection = hit.point - transform.position;
-                lookDirection.y = 0;
+            lookDirection = hit.point;
+            lookDirection.y = 0;
 
-                transform.LookAt(new Vector3(lookDirection.x, transform.position.y, lookDirection.z));
-            }
+            transform.LookAt(new Vector3(lookDirection.x, transform.position.y, lookDirection.z));
             /*lookDirection = hit.point - transform.position;
 
             transform.LookAt(hit.point);*/
@@ -122,9 +122,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void SetHealth()
+    private void SetText()
     {
         healthText.SetText("Player Health:" + Convert.ToInt32(health));
+        ammoText.SetText("Ammo:" + shots.ToString());
     }
 
     private void DamageTime(InputAction.CallbackContext context )
@@ -136,7 +137,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!shooting)
         {
-            StartCoroutine(Shooting());
+            shots--;
+            if(shots > 0)
+            {
+                StartCoroutine(Shooting());
+            }
+            if(shots <=0) 
+                shots = 0;
         }
     }
     private IEnumerator Shooting()
@@ -147,4 +154,12 @@ public class PlayerMovement : MonoBehaviour
         shooting = false;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Ammo")
+        {
+            shots = OriginalShots;
+            Destroy(other.gameObject);
+        }
+    }
 }
