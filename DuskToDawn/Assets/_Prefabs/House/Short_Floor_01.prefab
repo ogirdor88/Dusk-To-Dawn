@@ -590,6 +590,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5308266426261463587}
+  - component: {fileID: -6083251653320924151}
   m_Layer: 0
   m_Name: Short_Floor_01
   m_TagString: Untagged
@@ -622,6 +623,27 @@ Transform:
   - {fileID: 4259731283155696150}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &-6083251653320924151
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3357396734650281014}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.010178827, y: 0.00023629474, z: 0.010066298}
+  m_Center: {x: 0.00004472017, y: 0.000003182008, z: 0.0000774461}
 --- !u!1 &5312543045174725509
 GameObject:
   m_ObjectHideFlags: 0

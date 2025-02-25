@@ -92,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6841131985919225054}
+  - component: {fileID: 8487478674961462098}
   m_Layer: 0
   m_Name: Short_Right_Wall_01
   m_TagString: Untagged
@@ -117,6 +118,27 @@ Transform:
   - {fileID: 1333845781482523182}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8487478674961462098
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670205926399475623}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.001515086, y: 0.02013519, z: 0.0106431}
+  m_Center: {x: 0.0000158593, y: 0.0000510478, z: 0.00009128153}
 --- !u!1 &3731626858671049674
 GameObject:
   m_ObjectHideFlags: 0
