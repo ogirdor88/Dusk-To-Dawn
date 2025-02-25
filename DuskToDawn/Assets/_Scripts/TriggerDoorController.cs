@@ -20,10 +20,28 @@ public class TriggerDoorController : MonoBehaviour
             {
                 doorAnim.Play("DoorOpen", 0, 0);
             }
+            /*
             else if (closeTrigger)
             {
                 doorAnim.Play("DoorClose", 0, 0);
             }
+            */
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (openTrigger)
+            {
+                doorAnim.Play("DoorClose", 0, 0);
+            }
+            /*
+            else if (closeTrigger)
+            {
+                doorAnim.Play("DoorClose", 0, 0);
+            }*/
         }
     }
 }
