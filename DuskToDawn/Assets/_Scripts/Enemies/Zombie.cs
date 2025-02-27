@@ -14,10 +14,17 @@ public class Zombie : MonoBehaviour
 
     private int health = 8;
 
-   /* public CustomTrigger detectionTrigger;
-    public CustomTrigger bodyTrigger;*/
+    public CustomTrigger detectionTrigger;
+    public CustomTrigger bodyTrigger;
 
 
+    private void Awake()
+    {
+        detectionTrigger.EnteredTrigger += OndetectionTriggerEntered;
+        //detectionTrigger.ExitedTrigger += OndetectionTriggerExited;
+        bodyTrigger.EnteredTrigger += OnbodyTriggerEntered;
+        //bodyTrigger.ExitedTrigger -= OnbodyTriggerExited;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -51,4 +58,28 @@ public class Zombie : MonoBehaviour
             followPlayer=true;
         }
     }
+
+    private void OndetectionTriggerEntered(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            followPlayer = true;
+        }
+    }
+    /*private void OndetectionTriggerExited(Collider other)
+    {
+
+    }*/
+
+    private void OnbodyTriggerEntered(Collider other)
+    {
+        if (other.tag == "Bullet")
+        {
+            health -= 4;
+        }
+    }
+    /*private void OnbodyTriggerExited(Collider other)
+    {
+
+    }*/
 }
