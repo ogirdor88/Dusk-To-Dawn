@@ -161,5 +161,20 @@ public class PlayerMovement : MonoBehaviour
             shots = OriginalShots;
             Destroy(other.gameObject);
         }
+
+        if (other.tag == "LowAttack")
+        {
+            health -= 10;
+        }
+
+        if (other.tag == "MidAttack")
+        {
+            health -= 25;
+        }
+
+        if (other.tag == "HighAttack")
+        {
+            health -= 35;
+        }
     }
 }

@@ -5,18 +5,18 @@ using UnityEngine;
 public class Zombie : MonoBehaviour
 {
     [SerializeField]
-    private GameObject target;
+    private GameObject target, attackBox, followrange;
 
     [SerializeField]
-    private float speed;
+    private float speed, attackDelay;
 
-    private bool followPlayer;
+    private bool followPlayer, attackPlayer;
 
     private int health = 8;
 
     public CustomTrigger detectionTrigger;
     public CustomTrigger bodyTrigger;
-
+    public CustomTrigger attackTrigger;
 
     private void Awake()
     {
@@ -24,11 +24,12 @@ public class Zombie : MonoBehaviour
         //detectionTrigger.ExitedTrigger += OndetectionTriggerExited;
         bodyTrigger.EnteredTrigger += OnbodyTriggerEntered;
         //bodyTrigger.ExitedTrigger -= OnbodyTriggerExited;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
+        attackTrigger.EnteredTrigger += OnattackTriggerEntered;
+        attackTrigger.StayTrigger += OnattackTriggerStay;
+
         followPlayer = false;
+        attackPlayer = false;
+        attackBox.SetActive(false);
     }
 
     // Update is called once per frame
@@ -38,6 +39,7 @@ public class Zombie : MonoBehaviour
         {
             Getem();
         }
+
 
         if(health <= 0)
         {
@@ -82,4 +84,45 @@ public class Zombie : MonoBehaviour
     {
 
     }*/
+
+    private void OnattackTriggerEntered(Collider other)
+    {
+        //when the player enter the attack range have the follow stop so that the player can try to get away
+        //make the enemy attack
+        //set the attack bool to false;
+        if (other.tag == "Player")
+        {
+            
+            followPlayer = false;
+            followrange.SetActive(false);
+            if(!attackPlayer) 
+            {
+                StartCoroutine(AttackTime());
+            }
+            
+        }
+    }
+    private void OnattackTriggerStay(Collider other)
+    {
+        //when the player enter the attack range have the follow stop so that the player can try to get away
+        //make the enemy attack
+        //set the attack bool to false;
+        if (other.tag == "Player")
+        {
+            if (!attackPlayer)
+            {
+                StartCoroutine(AttackTime());
+            }
+
+        }
+    }
+
+    private IEnumerator AttackTime()
+    {
+        attackPlayer = true;
+        attackBox.SetActive(true);
+        yield return new WaitForSeconds(attackDelay);
+        attackBox.SetActive(false);
+        attackPlayer = false;
+    }
 }
