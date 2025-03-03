@@ -19,4 +19,12 @@ public class BulletMove : MonoBehaviour
         yield return new WaitForSeconds(5);
         Destroy( this.gameObject);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Zombie")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }
