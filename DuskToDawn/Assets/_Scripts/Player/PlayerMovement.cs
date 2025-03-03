@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public static float health = 100;
 
+    private float maxHealth;
+
     [SerializeField]
     private float dashSpeed, dashTime, shootDelay;
 
@@ -43,6 +45,7 @@ public class PlayerMovement : MonoBehaviour
         starting = transform.position;
         shooting = false;
         OriginalShots = shots;
+        maxHealth = health;
     }
 
     private void OnEnable()
@@ -176,5 +179,44 @@ public class PlayerMovement : MonoBehaviour
         {
             health -= 35;
         }
+
+        if (other.tag == "LowHeal")
+        {
+            if(health < maxHealth)
+            {
+                health += 10;
+                if(health > maxHealth)
+                {
+                    health = maxHealth;
+                }
+            }
+            Destroy(other.gameObject);
+        }
+        if (other.tag == "MidHeal")
+        {
+            if (health < maxHealth)
+            {
+                health += 20;
+                if (health > maxHealth)
+                {
+                    health = maxHealth;
+                }
+            }
+            Destroy(other.gameObject);
+        }
+        if (other.tag == "HighHeal")
+        {
+            if (health < maxHealth)
+            {
+                health += 30;
+                if (health > maxHealth)
+                {
+                    health = maxHealth;
+                }
+            }
+            Destroy(other.gameObject);
+        }
+
+
     }
 }

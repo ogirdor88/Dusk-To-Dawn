@@ -10,6 +10,7 @@ public class Zombie : MonoBehaviour
     [SerializeField]
     private float speed, attackDelay;
 
+
     private bool followPlayer, attackPlayer;
 
     private int health = 8;
@@ -30,6 +31,8 @@ public class Zombie : MonoBehaviour
         followPlayer = false;
         attackPlayer = false;
         attackBox.SetActive(false);
+
+        target = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -119,10 +122,13 @@ public class Zombie : MonoBehaviour
 
     private IEnumerator AttackTime()
     {
+        float speedhold = speed;
+        speed = 0;
         attackPlayer = true;
         attackBox.SetActive(true);
         yield return new WaitForSeconds(attackDelay);
         attackBox.SetActive(false);
         attackPlayer = false;
+        speed = speedhold;
     }
 }
