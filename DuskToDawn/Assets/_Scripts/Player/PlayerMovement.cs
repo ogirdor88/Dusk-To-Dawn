@@ -165,6 +165,11 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
         }
 
+        if (other.tag == "Death")
+        {
+            health = 0;
+        }
+
         if (other.tag == "LowAttack")
         {
             health -= 10;
