@@ -475,7 +475,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 76967380}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 677031589}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: restartLevelButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &76967380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -900,7 +912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &242565020
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1889,7 +1901,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 509108812}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 677031589}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: optionsLevelButton
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1693004657}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &509108812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2561,7 +2585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &807480509
 RectTransform:
   m_ObjectHideFlags: 0

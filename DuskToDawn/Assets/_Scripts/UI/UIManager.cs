@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -19,6 +21,8 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public GameObject pauseMenu;
+
     public void AddScore()
     {
         Debug.Log("Test");
@@ -34,8 +38,23 @@ public class UIManager : MonoBehaviour
         UI_pc.SetActive(false);
     }
 
+    public void restartLevelButton()
+    {
+        SceneManager.LoadScene(1);
+    }
 
 
+    public void optionsLevelButton(GameObject UI_op)
+    {
+        UI_op.SetActive(true);
+        pauseMenu.SetActive(false);
+    }
+
+    public void optionBack(GameObject UI_op)
+    {
+        pauseMenu.SetActive(true);
+        UI_op.SetActive(false);
+    }
 
 
 }
