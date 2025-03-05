@@ -1557,7 +1557,7 @@ PrefabInstance:
     - target: {fileID: 3061006335421986071, guid: fc1ceff2ac0666f4595debed8e32a5ea,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5
+      value: 1.54
       objectReference: {fileID: 0}
     - target: {fileID: 3061006335421986071, guid: fc1ceff2ac0666f4595debed8e32a5ea,
         type: 3}
@@ -1631,6 +1631,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MediumHeal
+      objectReference: {fileID: 0}
+    - target: {fileID: 597324868290154935, guid: dd797919efc8276489245ae935f394cb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8258039429682724723, guid: dd797919efc8276489245ae935f394cb,
         type: 3}
@@ -1755,6 +1760,79 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f1633de06204cf48b9e946289d1a92a, type: 3}
+--- !u!1001 &3247972987455518033
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4259295994763770810, guid: ea10c9f6a54ddac4e95bf1575020065c,
+        type: 3}
+      propertyPath: m_Name
+      value: DeathZone
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545145488484304771, guid: ea10c9f6a54ddac4e95bf1575020065c,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545145488484304771, guid: ea10c9f6a54ddac4e95bf1575020065c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545145488484304771, guid: ea10c9f6a54ddac4e95bf1575020065c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545145488484304771, guid: ea10c9f6a54ddac4e95bf1575020065c,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545145488484304771, guid: ea10c9f6a54ddac4e95bf1575020065c,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545145488484304771, guid: ea10c9f6a54ddac4e95bf1575020065c,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545145488484304771, guid: ea10c9f6a54ddac4e95bf1575020065c,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545145488484304771, guid: ea10c9f6a54ddac4e95bf1575020065c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545145488484304771, guid: ea10c9f6a54ddac4e95bf1575020065c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5545145488484304771, guid: ea10c9f6a54ddac4e95bf1575020065c,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7478774916378373057, guid: ea10c9f6a54ddac4e95bf1575020065c,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea10c9f6a54ddac4e95bf1575020065c, type: 3}
 --- !u!1001 &4974248906658780297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1845,6 +1923,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LargeHeal
+      objectReference: {fileID: 0}
+    - target: {fileID: 6374520902502022839, guid: 50c22f130743264408a498775818b19b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8294921642039201220, guid: 50c22f130743264408a498775818b19b,
         type: 3}
@@ -1995,3 +2078,4 @@ SceneRoots:
   - {fileID: 1534080967039047368}
   - {fileID: 2732365513965644034}
   - {fileID: 9049723996128169266}
+  - {fileID: 3247972987455518033}
