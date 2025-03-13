@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Gun Variables
     [SerializeField]
-    private GameObject bullet;
+    private GameObject bullet, rayObj;
     private bool shooting;
     public int shots;
     private int OriginalShots;
@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         SetText();
-        if(health <= 0)
+        if (health <= 0)
         {
             transform.position = starting;
             health = 100;
@@ -101,6 +101,13 @@ public class PlayerMovement : MonoBehaviour
             transform.LookAt(hit.point);*/
         }
 
+        RaycastHit objectHit;
+        Vector3 fwd = rayObj.transform.TransformDirection(Vector3.forward);
+        Debug.DrawRay(rayObj.transform.position, fwd * 1, Color.green);
+        if (Physics.Raycast(rayObj.transform.position, fwd, out objectHit, 1))
+        {
+
+        }
     }
 
     private void DodgeRoll(InputAction.CallbackContext context)
@@ -221,7 +228,5 @@ public class PlayerMovement : MonoBehaviour
             }
             Destroy(other.gameObject);
         }
-
-
     }
 }

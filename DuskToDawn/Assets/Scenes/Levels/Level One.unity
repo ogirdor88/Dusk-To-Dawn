@@ -35456,6 +35456,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1460988998}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1461631879 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5999462448710672593, guid: fc1ceff2ac0666f4595debed8e32a5ea,
+    type: 3}
+  m_PrefabInstance: {fileID: 2095231589}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1463627265
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51297,9 +51303,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2975150438442192379, guid: fc1ceff2ac0666f4595debed8e32a5ea,
         type: 3}
+      propertyPath: ray
+      value: 
+      objectReference: {fileID: 1461631879}
+    - target: {fileID: 2975150438442192379, guid: fc1ceff2ac0666f4595debed8e32a5ea,
+        type: 3}
       propertyPath: shots
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 2975150438442192379, guid: fc1ceff2ac0666f4595debed8e32a5ea,
+        type: 3}
+      propertyPath: rayObj
+      value: 
+      objectReference: {fileID: 2095231590}
     - target: {fileID: 2975150438442192379, guid: fc1ceff2ac0666f4595debed8e32a5ea,
         type: 3}
       propertyPath: ammoText
