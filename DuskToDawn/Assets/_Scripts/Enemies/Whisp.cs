@@ -26,6 +26,8 @@ public class Whisp : MonoBehaviour
         //detectionTrigger.ExitedTrigger += OndetectionTriggerExited;
         bodyTrigger.EnteredTrigger += OnbodyTriggerEntered;
         //bodyTrigger.ExitedTrigger -= OnbodyTriggerExited;
+
+        target = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -56,8 +58,17 @@ public class Whisp : MonoBehaviour
     {
         if (other.tag == "Bullet")
         {
-            health -= 4;
+            //health -= 4;
             //teleport the whisp
+            RandTeleport();
         }
+    }
+
+    private void RandTeleport()
+    {
+        float randDist = Random.RandomRange(3f, 7f);
+        Vector3 teleTarget = target.transform.position - target.transform.forward * randDist;
+
+        transform.position = teleTarget;
     }
 }
