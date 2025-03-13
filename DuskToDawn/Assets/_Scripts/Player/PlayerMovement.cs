@@ -23,8 +23,9 @@ public class PlayerMovement : MonoBehaviour
 
     private float maxHealth;
 
-    [SerializeField]
-    private float dashSpeed, dashTime, shootDelay;
+    //Mo Edits
+    //[SerializeField]
+    public float dashSpeed, dashTime, shootDelay;
 
     [SerializeField]
     private TMP_Text healthText, ammoText;
