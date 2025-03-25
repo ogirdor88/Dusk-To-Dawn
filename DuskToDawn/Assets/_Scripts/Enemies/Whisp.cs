@@ -6,19 +6,24 @@ public class Whisp : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject target;
+    private GameObject target, bullet, bulletSpawn, attackbox;
 
     [SerializeField]
     private float attackDelay;
 
-
-    private bool attackPlayer;
+    private bool shooting;
+    private bool lockon;
 
     private int health = 8;
 
     public CustomTrigger detectionTrigger;
     public CustomTrigger bodyTrigger;
 
+    private void Awake()
+    {
+        target = GameObject.FindWithTag("Player");
+        attackbox.SetActive(false);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -26,13 +31,18 @@ public class Whisp : MonoBehaviour
         //detectionTrigger.ExitedTrigger += OndetectionTriggerExited;
         bodyTrigger.EnteredTrigger += OnbodyTriggerEntered;
         //bodyTrigger.ExitedTrigger -= OnbodyTriggerExited;
+        shooting = false;
+        lockon = false;
 
-        target = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(lockon)
+        {
+            Attack();
+        }
         if (health <= 0)
         {
             Experience.currentEXP += 5;
@@ -45,11 +55,8 @@ public class Whisp : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            //shoot the player
-            if (!attackPlayer)
-            {
-
-            }
+            Debug.Log("GetThatGuy");
+            lockon = true;
         }
     }
 
@@ -58,7 +65,7 @@ public class Whisp : MonoBehaviour
     {
         if (other.tag == "Bullet")
         {
-            //health -= 4;
+            health -= 4;
             //teleport the whisp
             RandTeleport();
         }
@@ -66,9 +73,37 @@ public class Whisp : MonoBehaviour
 
     private void RandTeleport()
     {
+        Debug.Log("ouch");
         float randDist = Random.RandomRange(3f, 7f);
         Vector3 teleTarget = target.transform.position - target.transform.forward * randDist;
 
         transform.position = teleTarget;
+    }
+
+    private void Attack()
+    {
+        transform.LookAt(target.transform.position);
+        //shoot the player
+        if (!shooting)
+        {
+            StartCoroutine(Shooting());
+        }
+    }
+
+    private IEnumerator Shooting()
+    {
+        Debug.Log("FireBall");
+        shooting = true;
+        StartCoroutine(ShootingDisplay());
+        Instantiate(bullet, bulletSpawn.transform.position, transform.rotation);
+        yield return new WaitForSeconds(attackDelay);
+        shooting = false;
+    }
+
+    private IEnumerator ShootingDisplay()
+    {
+        attackbox.SetActive(false);
+        yield return new WaitForSeconds(.5f);
+        attackbox.SetActive(true);
     }
 }

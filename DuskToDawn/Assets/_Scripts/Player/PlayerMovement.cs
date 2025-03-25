@@ -183,6 +183,11 @@ public class PlayerMovement : MonoBehaviour
             health -= 10;
         }
 
+        if (other.name == "WhispShot")
+        {
+            Destroy(other.gameObject);
+        }
+
         if (other.tag == "MidAttack")
         {
             health -= 25;
