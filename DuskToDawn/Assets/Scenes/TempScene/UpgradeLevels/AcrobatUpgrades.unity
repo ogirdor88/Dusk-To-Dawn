@@ -329,7 +329,7 @@ MonoBehaviour:
   m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -459,7 +459,7 @@ Transform:
   m_GameObject: {fileID: 337990997}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.59, y: 1.24, z: 4.5}
+  m_LocalPosition: {x: 9.59, y: 1, z: -4.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -632,7 +632,7 @@ Transform:
   m_GameObject: {fileID: 513015137}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.69, y: 1.24, z: 4.5}
+  m_LocalPosition: {x: -8.69, y: 1, z: -4.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -771,8 +771,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 905120646}
-  trapObject: {fileID: 0}
-  upgradeTree: 3
+  Notes: 1 = Faster, 2 = Glass Trap Damage Reduction, 3 = Faster Dash Speed, 4 =
+    Dash for longer
+  upgradeTree: 0
 --- !u!4 &749974361
 Transform:
   m_ObjectHideFlags: 0
@@ -1129,7 +1130,7 @@ PrefabInstance:
     - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.87252617
+      value: 2.56
       objectReference: {fileID: 0}
     - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
         type: 3}
@@ -1139,7 +1140,7 @@ PrefabInstance:
     - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.517732
+      value: 9.61
       objectReference: {fileID: 0}
     - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
         type: 3}
