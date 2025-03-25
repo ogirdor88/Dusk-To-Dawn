@@ -7,16 +7,18 @@ using TMPro;
 using System;
 using UnityEngine.Rendering.Universal;
 using UnityEditor.VersionControl;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerMovement : MonoBehaviour
 {
+    Rigidbody prb;
     private Vector2 moveDirection;
     public NewControls movePlayer;
     private InputAction movement;
     private InputAction dash;
     private InputAction pow;
 
-    private Vector3 starting;
+    private Vector3 starting, dashDir;
 
     public float moveSpeed;
     public static float health = 100;
@@ -35,18 +37,20 @@ public class PlayerMovement : MonoBehaviour
     //Gun Variables
     [SerializeField]
     private GameObject bullet, rayObj;
-    private bool shooting;
+    private bool shooting, dashing;
     public int shots;
     private int OriginalShots;
 
 
     private void Awake()
     {
+        prb = GetComponent<Rigidbody>();
         movePlayer = new NewControls();
         starting = transform.position;
         shooting = false;
         OriginalShots = shots;
         maxHealth = health;
+        dashing = false;
     }
 
     private void OnEnable()
@@ -85,6 +89,7 @@ public class PlayerMovement : MonoBehaviour
 
         moveDirection = movement.ReadValue<Vector2>();
         transform.position += new Vector3(moveDirection.x, 0, moveDirection.y) * Time.deltaTime * moveSpeed;
+        dashDir = new Vector3(moveDirection.x, 1.5f, moveDirection.y);
 
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -111,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void DodgeRoll(InputAction.CallbackContext context)
+    /*private void DodgeRoll(InputAction.CallbackContext context)
     {
         Debug.Log("Dash");
         float temp = moveSpeed;
@@ -131,6 +136,23 @@ public class PlayerMovement : MonoBehaviour
             yield return null;
             moveSpeed = temp;
         }
+    }*/
+
+    public void DodgeRoll(InputAction.CallbackContext context)
+    {
+        Debug.Log("Dash");
+        if (!dashing)
+        {
+            prb.AddForce(dashDir * dashSpeed*10);
+        }
+        StartCoroutine(Dash());
+    }
+
+    private IEnumerator Dash()
+    {
+        dashing = true;
+        yield return new WaitForSeconds(.5f);
+        dashing = false;
     }
 
     private void SetText()
