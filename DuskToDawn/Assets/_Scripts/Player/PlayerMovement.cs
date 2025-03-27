@@ -86,31 +86,34 @@ public class PlayerMovement : MonoBehaviour
             transform.position = starting;
             health = 100;
         }
-
-        moveDirection = movement.ReadValue<Vector2>();
-        transform.position += new Vector3(moveDirection.x, 0, moveDirection.y) * Time.deltaTime * moveSpeed;
-        dashDir = new Vector3(moveDirection.x, 1.5f, moveDirection.y);
-
-
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-
+        if(!dashing)
         {
-            lookDirection = hit.point;
-            lookDirection.y = 0;
+            moveDirection = movement.ReadValue<Vector2>();
+            transform.position += new Vector3(moveDirection.x, 0, moveDirection.y) * Time.deltaTime * moveSpeed;
+            dashDir = new Vector3(moveDirection.x, 1.5f, moveDirection.y);
 
-            transform.LookAt(new Vector3(lookDirection.x, transform.position.y, lookDirection.z));
-            /*lookDirection = hit.point - transform.position;
 
-            transform.LookAt(hit.point);*/
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray, out hit))
+
+            {
+                lookDirection = hit.point;
+                lookDirection.y = 0;
+
+                transform.LookAt(new Vector3(lookDirection.x, transform.position.y, lookDirection.z));
+                /*lookDirection = hit.point - transform.position;
+
+                transform.LookAt(hit.point);*/
+            }
         }
+        
 
         RaycastHit objectHit;
-        Vector3 fwd = rayObj.transform.TransformDirection(Vector3.forward);
+        Vector3 fwd = rayObj.transform.TransformDirection(moveDirection);
         Debug.DrawRay(rayObj.transform.position, fwd * 1, Color.green);
-        if (Physics.Raycast(rayObj.transform.position, fwd, out objectHit, 1))
+        if (Physics.Raycast(rayObj.transform.position, fwd, out objectHit, 10))
         {
 
         }
@@ -143,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Dash");
         if (!dashing)
         {
-            prb.AddForce(dashDir * dashSpeed*10);
+            prb.AddForce(new Vector3(dashDir.x , 0, dashDir.z) * dashSpeed*10);
         }
         StartCoroutine(Dash());
     }
@@ -151,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator Dash()
     {
         dashing = true;
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
         dashing = false;
     }
 
