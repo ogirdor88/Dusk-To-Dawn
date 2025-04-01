@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction dash;
     private InputAction pow;
 
-    private Vector3 starting, dashDir;
+    private Vector3 starting, dashDir, respawn;
 
     public float moveSpeed;
     public static float health = 100;
@@ -258,6 +258,19 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
             Destroy(other.gameObject);
+        }
+
+        if (other.tag == "Fall")
+        {
+            respawn = transform.position;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.tag == "FZ")
+        {
+            transform.position = respawn;
         }
     }
 }
