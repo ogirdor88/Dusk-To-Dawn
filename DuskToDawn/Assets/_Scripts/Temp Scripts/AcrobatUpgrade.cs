@@ -74,5 +74,6 @@ public class AcrobatUpgrade : MonoBehaviour
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().dashTime = 0.15f;   
     }
 
+
 }
 

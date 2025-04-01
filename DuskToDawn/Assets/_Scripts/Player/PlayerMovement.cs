@@ -32,12 +32,13 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 lookDirection;
 
+    //Mo Edits - public og
     //Gun Variables
     [SerializeField]
     private GameObject bullet;
     private bool shooting;
     public int shots;
-    private int OriginalShots;
+    public int OriginalShots;
 
 
     private void Awake()
