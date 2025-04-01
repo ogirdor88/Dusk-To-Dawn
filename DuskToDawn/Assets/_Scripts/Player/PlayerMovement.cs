@@ -8,6 +8,7 @@ using System;
 using UnityEngine.Rendering.Universal;
 using UnityEditor.VersionControl;
 using static UnityEditor.Searcher.SearcherWindow.Alignment;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -41,6 +42,16 @@ public class PlayerMovement : MonoBehaviour
     public int shots;
     private int OriginalShots;
 
+    //Sprint Variables
+    private bool isSprinting = false;
+    [SerializeField]
+    private UnityEngine.UI.Image StaminaBar;
+/*    [SerializeField]
+    private TMP_Text boostText;*/
+    [SerializeField]
+    public float stamina, maxStamina, boostCost, normSpeed;
+    private Coroutine recharge;
+
 
     private void Awake()
     {
@@ -51,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         OriginalShots = shots;
         maxHealth = health;
         dashing = false;
+        normSpeed = moveSpeed;
     }
 
     private void OnEnable()
@@ -81,16 +93,18 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         SetText();
+
+        moveDirection = movement.ReadValue<Vector2>();
+        Sprinting();
+
         if (health <= 0)
         {
             transform.position = starting;
             health = 100;
         }
-        if(!dashing)
-        {
-            moveDirection = movement.ReadValue<Vector2>();
-            transform.position += new Vector3(moveDirection.x, 0, moveDirection.y) * Time.deltaTime * moveSpeed;
-            dashDir = new Vector3(moveDirection.x, 1.5f, moveDirection.y);
+        //if(!dashing)
+        //{
+            
 
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -107,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
 
                 transform.LookAt(hit.point);*/
             }
-        }
+        //}
         
 
         RaycastHit objectHit;
@@ -141,7 +155,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }*/
 
-    public void DodgeRoll(InputAction.CallbackContext context)
+    /*public void DodgeRoll(InputAction.CallbackContext context)
     {
         Debug.Log("Dash");
         if (!dashing)
@@ -156,14 +170,14 @@ public class PlayerMovement : MonoBehaviour
         dashing = true;
         yield return new WaitForSeconds(1f);
         dashing = false;
-    }
+    }*/
 
     private void SetText()
     {
         healthText.SetText("Player Health:" + Convert.ToInt32(health));
         ammoText.SetText("Ammo:" + shots.ToString());
     }
-
+    #region Gun
     private void DamageTime(InputAction.CallbackContext context )
     {
         Gunshots();
@@ -182,13 +196,69 @@ public class PlayerMovement : MonoBehaviour
                 shots = 0;
         }
     }
+
     private IEnumerator Shooting()
     {
         shooting = true;
         Instantiate(bullet, transform.position, transform.rotation);
-        yield return new WaitForSeconds(shootDelay);
+        yield return new WaitForSeconds(.1f);
         shooting = false;
     }
+    #endregion
+
+    #region Sprinting
+
+    private void DodgeRoll(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Performed)
+        {
+            Debug.Log("startRunning");
+            isSprinting = true;
+        }
+        if (context.phase == InputActionPhase.Canceled)
+        {
+            Debug.Log("SlowYourRoll");
+            isSprinting = false;
+        }
+    }
+    public void Sprinting()
+    {
+
+        if (isSprinting)
+        {
+            moveSpeed = dashSpeed;
+            stamina -= boostCost * Time.deltaTime;
+            if (stamina < 0)
+            {
+                stamina = 0;
+                isSprinting = false;
+            }
+            StaminaBar.fillAmount = stamina / maxStamina;
+            //boostText.text = "Boost: " + (int)stamina + "/" + (int)maxStamina;
+            if (recharge != null) StopCoroutine(recharge);
+            recharge = StartCoroutine(RechargeStamina());
+        }
+        else
+            moveSpeed = normSpeed;
+        transform.position += new Vector3(moveDirection.x, 0, moveDirection.y) * Time.deltaTime * moveSpeed;
+    }
+
+    public IEnumerator RechargeStamina()
+    {
+        yield return new WaitForSeconds(1f);
+
+        while (stamina < maxStamina)
+        {
+            stamina += boostCost / 10f;
+            //if the stamina bar gets full set the stamina to max stamina
+            if (stamina > maxStamina) stamina = maxStamina;
+            //update the stamina bar
+            StaminaBar.fillAmount = stamina / maxStamina;
+            //boostText.text = "Boost: " + (int)stamina + "/" + (int)maxStamina;
+            yield return new WaitForSeconds(.1f);
+        }
+    }
+    #endregion
 
     private void OnTriggerEnter(Collider other)
     {

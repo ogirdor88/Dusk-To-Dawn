@@ -42,8 +42,8 @@ public partial class @NewControls: IInputActionCollection2, IDisposable
                     ""id"": ""49649229-3750-4513-acbb-9a248482c881"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""interactions"": ""Press"",
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Attack"",
