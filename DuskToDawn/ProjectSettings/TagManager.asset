@@ -3,7 +3,21 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Ammo
+  - Health
+  - Zombie
+  - Bullet
+  - LowAttack
+  - MidAttack
+  - HighAttack
+  - LowHeal
+  - MidHeal
+  - HighHeal
+  - Death
+  - Fall
+  - FZ
   layers:
   - Default
   - TransparentFX
