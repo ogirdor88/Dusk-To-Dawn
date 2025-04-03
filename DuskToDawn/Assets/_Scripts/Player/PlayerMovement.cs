@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
         dash = movePlayer.Player.Dash;
         dash.Enable();
         dash.performed += DodgeRoll;
+        dash.canceled += DodgeRoll;
 
         //set up the attack button
         pow = movePlayer.Player.Attack;
