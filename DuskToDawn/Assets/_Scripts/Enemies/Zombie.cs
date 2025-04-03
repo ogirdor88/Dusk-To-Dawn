@@ -5,7 +5,7 @@ using UnityEngine;
 public class Zombie : MonoBehaviour
 {
     [SerializeField]
-    private GameObject target, attackBox, followrange;
+    private GameObject target, attackBox, followrange, ammoBoxDrop;
 
     [SerializeField]
     private float speed, attackDelay;
@@ -48,6 +48,7 @@ public class Zombie : MonoBehaviour
         {
             Experience.currentEXP += 5;
             Destroy(this.gameObject);
+            Instantiate(ammoBoxDrop, transform.position, Quaternion.identity);
         }
     }
 

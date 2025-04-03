@@ -35,12 +35,13 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 lookDirection;
 
+    //Mo Edits - public og
     //Gun Variables
     [SerializeField]
     private GameObject bullet, rayObj;
     private bool shooting, dashing;
     public int shots;
-    private int OriginalShots;
+    public int OriginalShots;
 
     //Sprint Variables
     private bool isSprinting = false;
