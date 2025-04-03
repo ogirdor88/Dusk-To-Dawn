@@ -78,6 +78,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Prop_Ammo_Set_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d742433d821b9a3409b583fec602fbe4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Bullet
+      objectReference: {fileID: 0}
     - target: {fileID: 1427103550671733546, guid: d742433d821b9a3409b583fec602fbe4,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
