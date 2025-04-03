@@ -92,6 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1012996416326305390}
+  - component: {fileID: 6987569284483808875}
   m_Layer: 0
   m_Name: Prop_DiningTable
   m_TagString: Untagged
@@ -119,6 +120,27 @@ Transform:
   - {fileID: 5782719423946424042}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &6987569284483808875
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879380836761148971}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5157707, y: 1, z: 1.6343317}
+  m_Center: {x: 0.011995708, y: 0, z: -0.0033358177}
 --- !u!1 &920889243446574614
 GameObject:
   m_ObjectHideFlags: 0
