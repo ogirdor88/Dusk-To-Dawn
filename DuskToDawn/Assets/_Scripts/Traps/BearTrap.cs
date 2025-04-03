@@ -40,7 +40,15 @@ public class BearTrap : MonoBehaviour
             }
             StartCoroutine(Grabbed());
         }
+
+        if (other.tag == "Bullet")
+        {
+            Debug.Log("Trapped");
+            this.gameObject.SetActive(false);
+
+        }
     }
+
 
     //after the player leaves the trap have it disapear so that they dont step in the dissarmed trap
     private void OnTriggerExit(Collider other)

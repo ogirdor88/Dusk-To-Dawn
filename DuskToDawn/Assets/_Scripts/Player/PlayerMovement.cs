@@ -35,12 +35,13 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 lookDirection;
 
+    //Mo Edits - public og
     //Gun Variables
     [SerializeField]
     private GameObject bullet, rayObj;
     private bool shooting, dashing;
     public int shots;
-    private int OriginalShots;
+    public int OriginalShots;
 
     //Sprint Variables
     private bool isSprinting = false;
@@ -75,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         dash = movePlayer.Player.Dash;
         dash.Enable();
         dash.performed += DodgeRoll;
+        dash.canceled += DodgeRoll;
 
         //set up the attack button
         pow = movePlayer.Player.Attack;
