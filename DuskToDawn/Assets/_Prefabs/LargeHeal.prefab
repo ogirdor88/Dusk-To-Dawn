@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1706260825976214954}
   - component: {fileID: 4766464917355268987}
   - component: {fileID: 5827448825295591712}
-  - component: {fileID: 3989804114537807223}
   m_Layer: 0
   m_Name: LargeHeal
   m_TagString: HighHeal
@@ -106,19 +105,3 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3989804114537807223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6374520902502022839}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9bff4b5403b52c48b4cfcaf5641f674, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  low: 0
-  mid: 0
-  high: 1
-  healing: 0

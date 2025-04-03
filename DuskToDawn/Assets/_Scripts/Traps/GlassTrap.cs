@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GlassTrap : MonoBehaviour
 {
-    [SerializeField]
-    private float damage;
+    //[SerializeField]
+    public static float damage = 5;
 
     private void Awake()
     {

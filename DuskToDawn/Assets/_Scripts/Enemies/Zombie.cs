@@ -46,6 +46,7 @@ public class Zombie : MonoBehaviour
 
         if(health <= 0)
         {
+            Experience.currentEXP += 5;
             Destroy(this.gameObject);
         }
     }

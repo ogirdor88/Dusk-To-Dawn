@@ -45,6 +45,7 @@ public class BearTrap : MonoBehaviour
     //after the player leaves the trap have it disapear so that they dont step in the dissarmed trap
     private void OnTriggerExit(Collider other)
     {
+        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().moveSpeed = playerspeed;
         this.gameObject.SetActive(false);
     }
 
