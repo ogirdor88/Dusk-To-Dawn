@@ -16380,7 +16380,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &452803881
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17525,7 +17525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &466246820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79625,6 +79625,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: (Temp)Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2645112985906248882, guid: fc1ceff2ac0666f4595debed8e32a5ea,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2645112985906248882, guid: fc1ceff2ac0666f4595debed8e32a5ea,
         type: 3}

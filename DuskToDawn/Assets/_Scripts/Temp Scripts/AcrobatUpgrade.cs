@@ -5,8 +5,25 @@ using UnityEngine;
 public class AcrobatUpgrade : MonoBehaviour
 {
 
+    public static AcrobatUpgrade Instance;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        // end of new code
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
     [SerializeField]
     private GameObject playerObject;
+
+    PlayerMovement pm;
     
     
     [TextArea]
@@ -53,23 +70,25 @@ public class AcrobatUpgrade : MonoBehaviour
     }
 
 
-    private void Faster()
+    public void Faster()
     {
-        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().moveSpeed *= 1.5f;
+        //playerObject.GetComponent<PlayerMovement>().normSpeed *= 1.5f;
+       PlayerMovement.normSpeed *= 1.5f;
+        Debug.Log("HAHHHHHAHHHHHHHHHHH");
     }
 
-    private void GlassTrapDamageReduction()
+    public void GlassTrapDamageReduction()
     {
         GlassTrap.damage = 2;
     }
 
-    private void FasterDash()
+    public void FasterDash()
     { 
-        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().dashSpeed = 65f;
+        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().dashSpeed = 18f;
        
     }
 
-    private void DashForLonger()
+    public void DashForLonger()
     {
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().dashTime = 0.15f;   
     }

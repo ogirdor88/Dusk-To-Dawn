@@ -49,13 +49,13 @@ public class PlayerMovement : MonoBehaviour
     private UnityEngine.UI.Image StaminaBar;
 /*    [SerializeField]
     private TMP_Text boostText;*/
-    [SerializeField]
-    public float stamina, maxStamina, boostCost, normSpeed;
+    //[SerializeField]
+    public static float stamina, maxStamina, boostCost, normSpeed;
     private Coroutine recharge;
 
 
     private void Awake()
-    {
+    {   
         prb = GetComponent<Rigidbody>();
         movePlayer = new NewControls();
         starting = transform.position;
@@ -64,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
         maxHealth = health;
         dashing = false;
         normSpeed = moveSpeed;
+
+        
     }
 
     private void OnEnable()
