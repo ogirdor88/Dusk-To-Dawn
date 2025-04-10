@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private GameObject bullet, rayObj;
     private bool shooting, dashing;
+    public bool hasGun;
     public int shots;
     public int OriginalShots;
 
@@ -186,7 +187,15 @@ public class PlayerMovement : MonoBehaviour
     #region Gun
     private void DamageTime(InputAction.CallbackContext context )
     {
-        Gunshots();
+        if(hasGun)
+        {
+            //Ranged Attack
+            Gunshots();
+        }
+        else
+        {
+            //Melee attack
+        }
     }
 
     private void Gunshots()
@@ -198,8 +207,11 @@ public class PlayerMovement : MonoBehaviour
             {
                 StartCoroutine(Shooting());
             }
-            if(shots <=0) 
+            if(shots <=0)
+            {
                 shots = 0;
+                hasGun = false;
+            }
         }
     }
 
@@ -271,6 +283,7 @@ public class PlayerMovement : MonoBehaviour
         if(other.tag == "Ammo")
         {
             shots = OriginalShots;
+            hasGun = true;
             Destroy(other.gameObject);
         }
 
