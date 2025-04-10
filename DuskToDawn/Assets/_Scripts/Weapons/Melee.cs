@@ -77,7 +77,8 @@ public class Melee : MonoBehaviour
             if(from.rotation == to.rotation)
             {
                 resetMelee = true;
-                StartCoroutine(ResetSwing());
+                if(resetMelee)
+                    StartCoroutine(ResetSwing());
             }
         }
     }
@@ -91,7 +92,7 @@ public class Melee : MonoBehaviour
 
     private IEnumerator ResetSwing()
     {
-
+        Debug.Log("RESET");
         yield return new WaitForSeconds(.1f);
     }
 }
