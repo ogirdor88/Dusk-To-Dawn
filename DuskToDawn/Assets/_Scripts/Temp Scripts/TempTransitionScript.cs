@@ -9,13 +9,9 @@ public class TempTransitionScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //SceneManager.LoadScene("Garden");
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene("Garden");
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
-    public void Playgame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    }
 }

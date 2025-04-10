@@ -7,79 +7,54 @@ public class PlayerTP : MonoBehaviour
 {
     public GameObject mainplayer;
 
-    public Vector3 spawn2 = new Vector3( -0.121737f, 0.0551838f, 1.068948f);
+    public Vector3 spawn2 = new Vector3();
+    public Vector3 spawn3 = new Vector3();
 
-    public bool flag = true;
+
+    public static bool flag = true;
+    public static bool flag2 = true;
+    public bool saygeronimo;
     private string sceneName;
-    //public int buildInd;
 
-    
-    private void Start()
+
+    private void Awake()
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-        Debug.Log(sceneName);
-        //int buildInd = currentScene.buildIndex;
+        
     }
-    
+
 
     private void Update()
     { 
         if (SceneManager.GetActiveScene().name == "Level Two" && flag == true)
         {
             Debug.Log("HUFHUIEFHUIEFUIH");
-            moveThePlayer();
+            movePlayerLVL2();
             flag = false;
         }
-        /*
-        switch (buildInd)
-        {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                moveThePlayer();
-                break;
-            default:
-                break;
-        }
-        */
 
-        /*
-        switch (sceneName)
+        if (SceneManager.GetActiveScene().name == "Level Three" && flag2 == true)
         {
-            case "Level Two":
-                moveThePlayer();
-                break;
-            default:
-                break;
+            Debug.Log("HUFHUIEFHUIEFUIH");
+            movePlayerLVL3();
+            flag2 = false;
         }
-        */
 
-        /*
-        if (flag)
-        {
-            moveThePlayer();
-            flag = false;
-            
-        }
-        */
+
     }
 
-    private void moveThePlayer()
+    private void movePlayerLVL2()
     {
-        mainplayer.GetComponent<Transform>().position = spawn2;
+        //mainplayer.GetComponent<Transform>().position = spawn2;
+        mainplayer.transform.position = spawn2;
     }
 
-    /*
-    IEnumerator checktheScene()
+    private void movePlayerLVL3()
     {
-        if (SceneManager.GetActiveScene().name == "Level Two")
-        {
-           Debug.Log("HUFHUIEFHUIEFUIH");
-           flag = true;
-        }
+        //mainplayer.GetComponent<Transform>().position = spawn2;
+        mainplayer.transform.position = spawn3;
     }
-    */
+
+
+
+
 }

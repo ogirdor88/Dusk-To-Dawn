@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelGardenLevel : MonoBehaviour
+public class TTS2 : MonoBehaviour
 {
-    public int level;
-    public bool lvlflag;
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(level);
+            SceneManager.LoadScene("Garden 1");
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
-
-
 
 }

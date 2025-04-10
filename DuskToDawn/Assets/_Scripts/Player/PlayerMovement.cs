@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderGraph;
+//using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using System;
 using UnityEngine.Rendering.Universal;
-using UnityEditor.VersionControl;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
+//using UnityEditor.VersionControl;
+//using static UnityEditor.Searcher.SearcherWindow.Alignment;
 using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public static float health = 100;
 
-    private float maxHealth;
+    public static float maxHealth;
 
     //Mo Edits
     //[SerializeField]
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 /*    [SerializeField]
     private TMP_Text boostText;*/
     //[SerializeField]
-    public static float stamina, maxStamina, boostCost, normSpeed;
+    public float stamina, maxStamina, boostCost, normSpeed;
     private Coroutine recharge;
 
 
@@ -105,6 +105,8 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = starting;
             health = 100;
+            PlayerTP.flag = true;
+            PlayerTP.flag2 = true;
         }
         //if(!dashing)
         //{
