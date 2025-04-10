@@ -47,6 +47,12 @@ public class Pause_Menu_Script : MonoBehaviour
         VolumePannel.SetActive(false);
     }
 
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Level One");
+    }
+
     public void Exit()
     {
         Time.timeScale = 1;
