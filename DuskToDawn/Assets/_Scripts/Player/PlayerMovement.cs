@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Mo Edits
     //[SerializeField]
-    public float dashSpeed, dashTime, shootDelay;
+    public float dashSpeed, dashTime, shootDelay, swingDelay;
 
     [SerializeField]
     private TMP_Text healthText, ammoText;
@@ -38,9 +38,9 @@ public class PlayerMovement : MonoBehaviour
     //Mo Edits - public og
     //Gun Variables
     [SerializeField]
-    private GameObject bullet, rayObj;
-    private bool shooting, dashing;
-    public bool hasGun;
+    private GameObject bullet, rayObj, MeleeBox;
+    private bool shooting, swinging;
+    public bool hasGun, knifeMode;
     public int shots;
     public int OriginalShots;
 
@@ -63,7 +63,6 @@ public class PlayerMovement : MonoBehaviour
         shooting = false;
         OriginalShots = shots;
         maxHealth = health;
-        dashing = false;
         normSpeed = moveSpeed;
 
         
@@ -184,10 +183,10 @@ public class PlayerMovement : MonoBehaviour
         healthText.SetText("Player Health:" + Convert.ToInt32(health));
         ammoText.SetText("Ammo:" + shots.ToString());
     }
-    #region Gun
+    #region Attack
     private void DamageTime(InputAction.CallbackContext context )
     {
-        if(hasGun)
+        if(hasGun && !knifeMode)
         {
             //Ranged Attack
             Gunshots();
@@ -195,6 +194,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             //Melee attack
+            HomeRun();
         }
     }
 
@@ -222,6 +222,24 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         shooting = false;
     }
+
+    private void HomeRun()
+    {
+        if(!swinging)
+        {
+            StartCoroutine(MeleeSwing());
+        }
+    }
+
+    private IEnumerator MeleeSwing()
+    {
+        swinging = true;
+        MeleeBox.SetActive(true);
+        yield return new WaitForSeconds(swingDelay);
+        MeleeBox.SetActive(false);
+        swinging = false;
+    }
+
     #endregion
 
     #region Sprinting
