@@ -84,6 +84,10 @@ public class Zombie : MonoBehaviour
         {
             health -= 4;
         }
+        if (other.tag == "Melee")
+        {
+            health -= 1;
+        }
     }
     /*private void OnbodyTriggerExited(Collider other)
     {

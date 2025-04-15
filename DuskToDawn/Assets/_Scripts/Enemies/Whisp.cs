@@ -69,12 +69,17 @@ public class Whisp : MonoBehaviour
             //teleport the whisp
             RandTeleport();
         }
+        if (other.tag == "Melee")
+        {
+            health -= 1;
+            RandTeleport();
+        }
     }
 
     private void RandTeleport()
     {
         Debug.Log("ouch");
-        float randDist = Random.RandomRange(3f, 7f);
+        float randDist = Random.Range(3f, 7f);
         Vector3 teleTarget = target.transform.position - target.transform.forward * randDist;
 
         transform.position = teleTarget;
