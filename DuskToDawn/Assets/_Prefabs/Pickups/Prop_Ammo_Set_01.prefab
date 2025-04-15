@@ -73,6 +73,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5795563451905812571, guid: d742433d821b9a3409b583fec602fbe4,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ammo
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d742433d821b9a3409b583fec602fbe4,
         type: 3}
       propertyPath: m_Name
@@ -81,7 +86,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d742433d821b9a3409b583fec602fbe4,
         type: 3}
       propertyPath: m_TagString
-      value: Bullet
+      value: Ammo
       objectReference: {fileID: 0}
     - target: {fileID: 1427103550671733546, guid: d742433d821b9a3409b583fec602fbe4,
         type: 3}

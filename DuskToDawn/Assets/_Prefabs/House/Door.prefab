@@ -243,6 +243,76 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &3809312503276361955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2703952696957703862}
+  - component: {fileID: 626362065562465231}
+  - component: {fileID: 154763770238778800}
+  m_Layer: 0
+  m_Name: Collider (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2703952696957703862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809312503276361955}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.10024617, y: -0.951, z: -0.202}
+  m_LocalScale: {x: 0.58823526, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8248923362809422789}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &626362065562465231
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809312503276361955}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.782055, y: 0.4776601, z: 1.053274}
+  m_Center: {x: -0.14026983, y: 0.20056273, z: -0.626272}
+--- !u!114 &154763770238778800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809312503276361955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6481d0f56c6a0f048bf94bb3d30c9b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorAnim: {fileID: 5474267205304060950}
+  otherTriggerToTurnOff: {fileID: 4529944369612677823}
+  openTrigger: 1
+  closeTrigger: 0
 --- !u!1 &4529944369612677823
 GameObject:
   m_ObjectHideFlags: 0
@@ -270,7 +340,7 @@ Transform:
   m_GameObject: {fileID: 4529944369612677823}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.10024617, y: -0.951, z: -0.02476827}
+  m_LocalPosition: {x: 0.10024617, y: -0.951, z: 0.734}
   m_LocalScale: {x: 0.58823526, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -295,8 +365,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.7820356, y: 0.4776601, z: 2.2754798}
-  m_Center: {x: -0.1402698, y: 0.20056273, z: -0.015169084}
+  m_Size: {x: 1.782055, y: 0.4776601, z: 1.053274}
+  m_Center: {x: -0.14026983, y: 0.20056273, z: -0.626272}
 --- !u!114 &8892742082886984947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,6 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doorAnim: {fileID: 5474267205304060950}
+  otherTriggerToTurnOff: {fileID: 3809312503276361955}
   openTrigger: 1
   closeTrigger: 0
 --- !u!1 &5956904771657521705
@@ -430,6 +501,7 @@ Transform:
   - {fileID: 403567010085772224}
   - {fileID: 3470296153775605064}
   - {fileID: 2650067440476684171}
+  - {fileID: 2703952696957703862}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4471746709200120164

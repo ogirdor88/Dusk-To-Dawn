@@ -8,6 +8,10 @@ public class EarlyLevelExit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        if (other.CompareTag("Player"))
+        {
+            SceneManager.LoadScene("TEMPEndScreen");
+        }
+        
     }
 }
