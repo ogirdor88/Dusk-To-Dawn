@@ -14,6 +14,7 @@ public class Zombie : MonoBehaviour
     private bool followPlayer, attackPlayer;
 
     private int health = 8;
+    public static bool zombieUpgrade;
 
     public CustomTrigger detectionTrigger;
     public CustomTrigger bodyTrigger;
@@ -48,7 +49,10 @@ public class Zombie : MonoBehaviour
         {
             Experience.currentEXP += 5;
             Destroy(this.gameObject);
-            Instantiate(ammoBoxDrop, transform.position, Quaternion.identity);
+            if (zombieUpgrade)
+            {
+                Instantiate(ammoBoxDrop, transform.position, Quaternion.identity);
+            }
         }
     }
 

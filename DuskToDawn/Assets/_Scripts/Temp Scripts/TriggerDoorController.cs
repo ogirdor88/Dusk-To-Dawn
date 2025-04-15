@@ -9,6 +9,9 @@ public class TriggerDoorController : MonoBehaviour
     private Animator doorAnim;
 
     [SerializeField]
+    private GameObject otherTriggerToTurnOff;
+
+    [SerializeField]
     private bool openTrigger = false;
     [SerializeField]
     private bool closeTrigger = false;
@@ -19,7 +22,10 @@ public class TriggerDoorController : MonoBehaviour
             if (openTrigger)
             {
                 doorAnim.Play("DoorOpen", 0, 0);
+
+                StartCoroutine(turnOffTrigger());               
             }
+
             /*
             else if (closeTrigger)
             {
@@ -43,5 +49,12 @@ public class TriggerDoorController : MonoBehaviour
                 doorAnim.Play("DoorClose", 0, 0);
             }*/
         }
+    }
+
+    IEnumerator turnOffTrigger()
+    {
+        otherTriggerToTurnOff.SetActive(false);
+        yield return new WaitForSeconds(3f);
+        otherTriggerToTurnOff.SetActive(true);
     }
 }
