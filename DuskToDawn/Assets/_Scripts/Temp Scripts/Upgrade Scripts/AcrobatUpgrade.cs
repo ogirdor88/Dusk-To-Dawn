@@ -8,6 +8,9 @@ public class AcrobatUpgrade : MonoBehaviour
     [SerializeField]
     private GameObject playerObject;
 
+    [SerializeField]
+    private GameObject button1, button2, button3, button4, button5, button6;
+
     PlayerMovement pm;
     
     
@@ -19,27 +22,36 @@ public class AcrobatUpgrade : MonoBehaviour
 
     public void Faster()
     {
-        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().normSpeed *= 1.5f;
-        //playerObject.GetComponent<PlayerMovement>().normSpeed *= 1.5f;
-       //PlayerMovement.normSpeed *= 1.5f;
-        Debug.Log("HAHHHHHAHHHHHHHHHHH");
+        if (Experience.currentLVL >= 1)
+        {
+            GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().normSpeed *= 1.1f;
+            Destroy(button1);
+            Experience.currentLVL -= 1;
+        } 
+        
     }
 
     public void GlassTrapDamageReduction()
     {
-        GlassTrap.damage = 2;
+        if (Experience.currentLVL >= 2)
+            GlassTrap.damage = 2; Destroy(button4); Experience.currentLVL -= 2;
     }
 
     public void FasterDash()
     {
-        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().dashSpeed = 11.5f;
-        //PlayerMovement.dashSpeed = 18f;       
+        if(Experience.currentLVL >= 1)
+            GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().dashSpeed = 11.5f; Destroy(button2); Experience.currentLVL -= 1;
     }
 
     public void MoreMaxStamina()
     {
-        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().maxStamina = 75;
-        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().stamina = 75;
+        if (Experience.currentLVL >= 2)
+        {
+            GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().maxStamina = 75;
+            GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().stamina = 75;
+            Destroy(button4);
+            Experience.currentLVL -= 2;
+        }
 
     }
 
