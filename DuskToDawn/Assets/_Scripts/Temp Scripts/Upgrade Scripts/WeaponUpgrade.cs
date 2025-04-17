@@ -28,5 +28,11 @@ public class WeaponUpgrade : MonoBehaviour
         Zombie.zombieUpgrade = true;
     }
 
+    public void BulletNotSpent()
+    {
+        PlayerMovement.bulletChance = true;
+        PlayerMovement.regularShooting = false;
+    }
+
 }
 

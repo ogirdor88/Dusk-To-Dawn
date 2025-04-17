@@ -7,6 +7,9 @@ public class SurvivalistUpgrades : MonoBehaviour
     [SerializeField]
     private GameObject playerObject;
 
+    [SerializeField]
+    private GameObject checkenemy;
+
 
     [TextArea]
     public string Notes = "1 = Health Increase, 2 = Health More Increased,";
@@ -19,5 +22,7 @@ public class SurvivalistUpgrades : MonoBehaviour
         PlayerMovement.health += 25f;
         PlayerMovement.maxHealth += 25f;
     }
+
+   
 
 }

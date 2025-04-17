@@ -9,6 +9,7 @@ using UnityEngine.Rendering.Universal;
 //using UnityEditor.VersionControl;
 //using static UnityEditor.Searcher.SearcherWindow.Alignment;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed;
     public static float health = 100;
+    private int coinflip;
+    public static bool bulletChance;
+    public static bool regularShooting;
 
     public static float maxHealth;
 
@@ -64,8 +68,10 @@ public class PlayerMovement : MonoBehaviour
         OriginalShots = shots;
         maxHealth = health;
         normSpeed = moveSpeed;
+        bulletChance = false;
+        regularShooting = true;
 
-        
+
     }
 
     private void OnEnable()
@@ -202,8 +208,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!shooting)
         {
-            shots--;
-            if(shots > 0)
+            if (bulletChance) {
+                coinflip = Random.Range(1, 10);
+                if (coinflip % 2 == 0)
+                {
+                    StartCoroutine(Shooting());
+                }
+                else
+                {
+                    shots--;
+                }
+            }
+
+            if (regularShooting)
+            {
+                shots--;
+            }
+
+            if (shots > 0)
             {
                 StartCoroutine(Shooting());
             }
