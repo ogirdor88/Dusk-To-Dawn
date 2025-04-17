@@ -12,7 +12,8 @@ public class Zombie : MonoBehaviour
 
 
     private bool followPlayer, attackPlayer;
-
+    
+    [SerializeField]
     private int health = 8;
     public static bool zombieUpgrade;
 
