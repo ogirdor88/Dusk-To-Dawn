@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: weaponHold
+  m_Mask: 00000000010000000000000000000000000000000100000001000000010000000100000000000000000000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Backpack
+    m_Weight: 1
+  - m_Path: Body
+    m_Weight: 1
+  - m_Path: Body/Head
+    m_Weight: 1
+  - m_Path: Body/Head/Face
+    m_Weight: 1
+  - m_Path: Body/Head/neck
+    m_Weight: 1
+  - m_Path: Body/Head/nose
+    m_Weight: 1
+  - m_Path: Body/leftArm
+    m_Weight: 1
+  - m_Path: Body/leftArm/leftHand
+    m_Weight: 1
+  - m_Path: Body/leftArm/leftLowerArm
+    m_Weight: 1
+  - m_Path: Body/leftArm/leftUpperArm
+    m_Weight: 1
+  - m_Path: Body/leftLeg
+    m_Weight: 1
+  - m_Path: Body/leftLeg/leftFoot
+    m_Weight: 1
+  - m_Path: Body/leftLeg/leftLowerLeg
+    m_Weight: 1
+  - m_Path: Body/leftLeg/leftLowerLeg1
+    m_Weight: 1
+  - m_Path: Body/leftLeg/leftUpperLeg
+    m_Weight: 1
+  - m_Path: Body/leftLeg1
+    m_Weight: 1
+  - m_Path: Body/lowerTorso
+    m_Weight: 1
+  - m_Path: Body/rightArm1
+    m_Weight: 1
+  - m_Path: Body/rightArm1/rightHand
+    m_Weight: 1
+  - m_Path: Body/rightArm1/rightLowerArm
+    m_Weight: 1
+  - m_Path: Body/rightArm1/rightUpperArm
+    m_Weight: 1
+  - m_Path: Body/rightLeg
+    m_Weight: 1
+  - m_Path: Body/rightLeg/rightFoot
+    m_Weight: 1
+  - m_Path: Body/rightLeg/rightUpperLeg
+    m_Weight: 1
+  - m_Path: Body/Torso
+    m_Weight: 1
+  - m_Path: Body/upperTorso
+    m_Weight: 1
+  - m_Path: Body/Waist
+    m_Weight: 1
+  - m_Path: PlayerSkeleton
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/L_upperLeg
+    m_Weight: 0
+  - m_Path: PlayerSkeleton/L_upperLeg/L_lowerLeg
+    m_Weight: 0
+  - m_Path: PlayerSkeleton/L_upperLeg/L_lowerLeg/L_Foot
+    m_Weight: 0
+  - m_Path: PlayerSkeleton/L_upperLeg/L_lowerLeg/L_Foot/joint14
+    m_Weight: 0
+  - m_Path: PlayerSkeleton/lowerTorso
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/lowerTorso/Clavicles
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/lowerTorso/Clavicles/L_upperArm
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/lowerTorso/Clavicles/L_upperArm/L_lowerArm
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/lowerTorso/Clavicles/L_upperArm/L_lowerArm/L_Wrist
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/lowerTorso/Clavicles/L_upperArm/L_lowerArm/L_Wrist/L_Hand
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/lowerTorso/Clavicles/R_upperArm
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/lowerTorso/Clavicles/R_upperArm/R_lowerArm
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/lowerTorso/Clavicles/R_upperArm/R_lowerArm/R_Wrist
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/lowerTorso/Clavicles/R_upperArm/R_lowerArm/R_Wrist/R_Hand
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/lowerTorso/Clavicles/upperTorso
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/lowerTorso/Clavicles/upperTorso/Neck
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/lowerTorso/Clavicles/upperTorso/Neck/Head
+    m_Weight: 1
+  - m_Path: PlayerSkeleton/R_upperLeg
+    m_Weight: 0
+  - m_Path: PlayerSkeleton/R_upperLeg/R_lowerLeg
+    m_Weight: 0
+  - m_Path: PlayerSkeleton/R_upperLeg/R_lowerLeg/R_Foot
+    m_Weight: 0
+  - m_Path: PlayerSkeleton/R_upperLeg/R_lowerLeg/R_Foot/joint14
+    m_Weight: 0
