@@ -113,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
             health = 100;
             PlayerTP.flag = true;
             PlayerTP.flag2 = true;
+            PlayerTP.flag3 = true;
         }
         //if(!dashing)
         //{

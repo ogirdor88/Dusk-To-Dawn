@@ -9,10 +9,12 @@ public class PlayerTP : MonoBehaviour
 
     public Vector3 spawn2 = new Vector3();
     public Vector3 spawn3 = new Vector3();
+    public Vector3 spawn4 = new Vector3();
 
 
     public static bool flag = true;
     public static bool flag2 = true;
+    public static bool flag3 = true;
     public bool saygeronimo;
     private string sceneName;
 
@@ -39,6 +41,13 @@ public class PlayerTP : MonoBehaviour
             flag2 = false;
         }
 
+        if (SceneManager.GetActiveScene().name == "Level Four" && flag3 == true)
+        {
+            Debug.Log("HUFHUIEFHUIEFUIH");
+            movePlayerLVL4();
+            flag3 = false;
+        }
+
 
     }
 
@@ -54,7 +63,11 @@ public class PlayerTP : MonoBehaviour
         mainplayer.transform.position = spawn3;
     }
 
-
+    private void movePlayerLVL4()
+    {
+        //mainplayer.GetComponent<Transform>().position = spawn2;
+        mainplayer.transform.position = spawn4;
+    }
 
 
 }

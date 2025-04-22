@@ -58755,7 +58755,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &982955158
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80347,7 +80347,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1320751417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113187,6 +113187,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SprintingPlayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 3269078918625505795, guid: 20a1203dbfd4a6b4d9835ac035c951a2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
