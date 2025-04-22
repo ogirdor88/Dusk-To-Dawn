@@ -30,6 +30,7 @@ public class Experience : MonoBehaviour
     {
         TextUpdate();
         LevelUp();
+        
     }
 
    private void LevelUp()

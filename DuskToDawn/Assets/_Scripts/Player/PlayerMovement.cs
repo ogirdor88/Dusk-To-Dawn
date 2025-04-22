@@ -9,6 +9,7 @@ using UnityEngine.Rendering.Universal;
 //using UnityEditor.VersionControl;
 //using static UnityEditor.Searcher.SearcherWindow.Alignment;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -23,12 +24,15 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed;
     public static float health = 100;
+    private int coinflip;
+    public static bool bulletChance;
+    public static bool regularShooting;
 
     public static float maxHealth;
 
     //Mo Edits
     //[SerializeField]
-    public float dashSpeed, dashTime, shootDelay;
+    public float dashSpeed, dashTime, shootDelay, swingDelay;
 
     [SerializeField]
     private TMP_Text healthText, ammoText;
@@ -38,9 +42,9 @@ public class PlayerMovement : MonoBehaviour
     //Mo Edits - public og
     //Gun Variables
     [SerializeField]
-    private GameObject bullet, rayObj;
-    private bool shooting, dashing;
-    public bool hasGun;
+    private GameObject bullet, rayObj, MeleeBox;
+    private bool shooting, swinging;
+    public bool hasGun, knifeMode;
     public int shots;
     public int OriginalShots;
 
@@ -63,10 +67,11 @@ public class PlayerMovement : MonoBehaviour
         shooting = false;
         OriginalShots = shots;
         maxHealth = health;
-        dashing = false;
         normSpeed = moveSpeed;
+        bulletChance = false;
+        regularShooting = true;
 
-        
+
     }
 
     private void OnEnable()
@@ -108,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
             health = 100;
             PlayerTP.flag = true;
             PlayerTP.flag2 = true;
+            PlayerTP.flag3 = true;
         }
         //if(!dashing)
         //{
@@ -184,10 +190,10 @@ public class PlayerMovement : MonoBehaviour
         healthText.SetText("Player Health:" + Convert.ToInt32(health));
         ammoText.SetText("Ammo:" + shots.ToString());
     }
-    #region Gun
+    #region Attack
     private void DamageTime(InputAction.CallbackContext context )
     {
-        if(hasGun)
+        if(hasGun && !knifeMode)
         {
             //Ranged Attack
             Gunshots();
@@ -195,6 +201,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             //Melee attack
+            HomeRun();
         }
     }
 
@@ -202,8 +209,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!shooting)
         {
-            shots--;
-            if(shots > 0)
+            if (bulletChance) {
+                coinflip = Random.Range(1, 10);
+                if (coinflip % 2 == 0)
+                {
+                    StartCoroutine(Shooting());
+                }
+                else
+                {
+                    shots--;
+                }
+            }
+
+            if (regularShooting)
+            {
+                shots--;
+            }
+
+            if (shots > 0)
             {
                 StartCoroutine(Shooting());
             }
@@ -222,6 +245,24 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         shooting = false;
     }
+
+    private void HomeRun()
+    {
+        if(!swinging)
+        {
+            StartCoroutine(MeleeSwing());
+        }
+    }
+
+    private IEnumerator MeleeSwing()
+    {
+        swinging = true;
+        MeleeBox.SetActive(true);
+        yield return new WaitForSeconds(swingDelay);
+        MeleeBox.SetActive(false);
+        swinging = false;
+    }
+
     #endregion
 
     #region Sprinting
