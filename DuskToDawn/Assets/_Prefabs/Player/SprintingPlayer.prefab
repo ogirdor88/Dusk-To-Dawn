@@ -912,6 +912,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerRig
       objectReference: {fileID: 0}
+    - target: {fileID: 8657180361182651907, guid: 2b7a00a99e1548149bb5b8869c29548b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b79782788544c924a8a8d5e396621346, type: 2}
     - target: {fileID: 8952516374972734245, guid: 2b7a00a99e1548149bb5b8869c29548b,
         type: 3}
       propertyPath: m_LocalPosition.x
