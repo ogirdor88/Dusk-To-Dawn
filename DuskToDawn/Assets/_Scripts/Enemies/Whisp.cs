@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Whisp : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject target, bullet, bulletSpawn, attackbox;
+    private GameObject target, bullet, bulletSpawn, attackbox,rayObj;
 
     [SerializeField]
     private float attackDelay;
@@ -38,15 +39,33 @@ public class Whisp : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {/*
         if(lockon)
         {
             Attack();
-        }
+        }*/
+        Attack();
         if (health <= 0)
         {
             Experience.currentEXP += 5;
             Destroy(this.gameObject);
+        }
+        Ray ray;
+        RaycastHit objectHit;
+        Vector3 fwd = rayObj.transform.TransformDirection(Vector3.forward) *50;
+        Debug.DrawRay(rayObj.transform.position, fwd , Color.green);
+        if (Physics.Raycast(attackbox.transform.position, fwd, out objectHit))
+        {
+            if(objectHit.transform.CompareTag("Player"))
+            {
+                Debug.Log("looking at player");
+                transform.LookAt(target.transform.position);
+                //shoot the player
+                if (!shooting)
+                {
+                    StartCoroutine(Shooting());
+                }
+            }
         }
     }
 
@@ -89,10 +108,10 @@ public class Whisp : MonoBehaviour
     {
         transform.LookAt(target.transform.position);
         //shoot the player
-        if (!shooting)
+        /*if (!shooting)
         {
             StartCoroutine(Shooting());
-        }
+        }*/
     }
 
     private IEnumerator Shooting()
