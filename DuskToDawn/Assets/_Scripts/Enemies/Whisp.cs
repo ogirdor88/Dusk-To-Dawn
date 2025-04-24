@@ -29,7 +29,7 @@ public class Whisp : MonoBehaviour
     void Start()
     {
         detectionTrigger.EnteredTrigger += OndetectionTriggerEntered;
-        //detectionTrigger.ExitedTrigger += OndetectionTriggerExited;
+        detectionTrigger.ExitedTrigger += OndetectionTriggerExited;
         bodyTrigger.EnteredTrigger += OnbodyTriggerEntered;
         //bodyTrigger.ExitedTrigger -= OnbodyTriggerExited;
         shooting = false;
@@ -39,18 +39,18 @@ public class Whisp : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {/*
+    {
         if(lockon)
         {
             Attack();
-        }*/
-        Attack();
+        }
+        //Attack();
         if (health <= 0)
         {
             Experience.currentEXP += 5;
             Destroy(this.gameObject);
         }
-        Ray ray;
+        /*Ray ray;
         RaycastHit objectHit;
         Vector3 fwd = rayObj.transform.TransformDirection(Vector3.forward) *50;
         Debug.DrawRay(rayObj.transform.position, fwd , Color.green);
@@ -66,7 +66,7 @@ public class Whisp : MonoBehaviour
                     StartCoroutine(Shooting());
                 }
             }
-        }
+        }*/
     }
 
     //when the player gets in range the whisp will begin firing projectiles at them
@@ -76,6 +76,14 @@ public class Whisp : MonoBehaviour
         {
             Debug.Log("GetThatGuy");
             lockon = true;
+        }
+    }
+    private void OndetectionTriggerExited(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Debug.Log("whereHeGo");
+            lockon = false;
         }
     }
 
@@ -108,10 +116,10 @@ public class Whisp : MonoBehaviour
     {
         transform.LookAt(target.transform.position);
         //shoot the player
-        /*if (!shooting)
+        if (!shooting)
         {
             StartCoroutine(Shooting());
-        }*/
+        }
     }
 
     private IEnumerator Shooting()
