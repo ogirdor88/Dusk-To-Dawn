@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 765e0f3d3bab8a44c9cf52df35d53ce2
+guid: b0c9874bb5da04e4da5d3e828c0f3ecb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -37,14 +37,14 @@ ModelImporter:
       takeName: Take 001
       internalID: 1827226128182048838
       firstFrame: 0
-      lastFrame: 100
+      lastFrame: 160
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -120,7 +120,7 @@ ModelImporter:
     legStretch: 0.05
     feetSpacing: 0
     globalScale: 1
-    rootMotionBoneName: PlayerSkeleton
+    rootMotionBoneName: zombieModel
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1

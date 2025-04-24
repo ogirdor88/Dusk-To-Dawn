@@ -6,13 +6,13 @@ public class ThirdPersonAnimation : MonoBehaviour
 {
     private Animator anim;
     private Rigidbody rb;
-    public GameObject playerRig;
+    public GameObject characterRig;
     public float maxSpeed = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = playerRig.GetComponent<Animator>();
+        anim = characterRig.GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
     }
 

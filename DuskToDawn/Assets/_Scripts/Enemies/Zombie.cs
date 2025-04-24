@@ -20,6 +20,10 @@ public class Zombie : MonoBehaviour
     public CustomTrigger bodyTrigger;
     public CustomTrigger attackTrigger;
 
+    //ZombieAnimation
+    private Animator anim;
+    public GameObject ZombieRig;
+
     private void Awake()
     {
         detectionTrigger.EnteredTrigger += OndetectionTriggerEntered;
@@ -33,6 +37,8 @@ public class Zombie : MonoBehaviour
         attackPlayer = false;
         attackBox.SetActive(false);
 
+        anim = ZombieRig.GetComponent<Animator>();
+
         target = GameObject.FindWithTag("Player");
     }
 
@@ -41,6 +47,7 @@ public class Zombie : MonoBehaviour
     {
         if (followPlayer)
         {
+            anim.SetBool("isWalking", true);
             Getem();
         }
 
@@ -54,6 +61,8 @@ public class Zombie : MonoBehaviour
                 Instantiate(ammoBoxDrop, transform.position, Quaternion.identity);
             }
         }
+
+        anim.SetBool("isWalking", false);
     }
 
     private void Getem()
