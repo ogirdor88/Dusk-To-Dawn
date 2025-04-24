@@ -2,86 +2,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Zombie : MonoBehaviour
+public class RatFollow : MonoBehaviour
 {
     [SerializeField]
-    private GameObject target, attackBox, followrange, ammoBoxDrop;
-
+    private GameObject target, attackBox;
     [SerializeField]
     private float speed, attackDelay;
 
 
-    private bool followPlayer, attackPlayer;
-    
+    private bool attackPlayer;
+
     [SerializeField]
     private int health = 8;
-    public static bool zombieUpgrade;
-
-    public CustomTrigger detectionTrigger;
     public CustomTrigger bodyTrigger;
     public CustomTrigger attackTrigger;
 
     private void Awake()
     {
-        detectionTrigger.EnteredTrigger += OndetectionTriggerEntered;
-        //detectionTrigger.ExitedTrigger += OndetectionTriggerExited;
         bodyTrigger.EnteredTrigger += OnbodyTriggerEntered;
         //bodyTrigger.ExitedTrigger -= OnbodyTriggerExited;
         attackTrigger.EnteredTrigger += OnattackTriggerEntered;
         attackTrigger.StayTrigger += OnattackTriggerStay;
-
-        followPlayer = false;
         attackPlayer = false;
         attackBox.SetActive(false);
 
         target = GameObject.FindWithTag("Player");
     }
-
     // Update is called once per frame
     void Update()
     {
-        if (followPlayer)
-        {
-            Getem();
-        }
 
+        transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
+        transform.Translate(Vector3.forward * speed * Time.deltaTime);
 
-        if(health <= 0)
+        if (health <= 0)
         {
             Experience.currentEXP += 5;
             Destroy(this.gameObject);
-            if (zombieUpgrade)
-            {
-                Instantiate(ammoBoxDrop, transform.position, Quaternion.identity);
-            }
         }
     }
-
-    private void Getem()
-    {
-        transform.LookAt(target.transform.position);
-        transform.Translate(Vector3.forward * speed * Time.deltaTime);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player")
-        {
-            followPlayer=true;
-        }
-    }
-
-    private void OndetectionTriggerEntered(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            followPlayer = true;
-        }
-    }
-    /*private void OndetectionTriggerExited(Collider other)
-    {
-
-    }*/
 
     private void OnbodyTriggerEntered(Collider other)
     {
@@ -106,14 +65,11 @@ public class Zombie : MonoBehaviour
         //set the attack bool to false;
         if (other.tag == "Player")
         {
-            
-            followPlayer = false;
-            followrange.SetActive(false);
-            if(!attackPlayer) 
+            if (!attackPlayer)
             {
                 StartCoroutine(AttackTime());
             }
-            
+
         }
     }
     private void OnattackTriggerStay(Collider other)
