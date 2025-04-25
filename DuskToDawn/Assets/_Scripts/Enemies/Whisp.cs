@@ -20,10 +20,16 @@ public class Whisp : MonoBehaviour
     public CustomTrigger detectionTrigger;
     public CustomTrigger bodyTrigger;
 
+    //WispAnimation
+    private Animator anim;
+    public GameObject wispRig;
+
     private void Awake()
     {
         target = GameObject.FindWithTag("Player");
         attackbox.SetActive(false);
+
+        anim = wispRig.GetComponent<Animator>();
     }
     // Start is called before the first frame update
     void Start()
@@ -42,6 +48,7 @@ public class Whisp : MonoBehaviour
     {
         if(lockon)
         {
+            anim.SetTrigger("Attack");
             Attack();
         }
         //Attack();

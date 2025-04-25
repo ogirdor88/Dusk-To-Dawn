@@ -1190,8 +1190,49 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8608184945051845023, guid: 2b7a00a99e1548149bb5b8869c29548b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7597608529083928146}
   m_SourcePrefab: {fileID: 100100000, guid: 2b7a00a99e1548149bb5b8869c29548b, type: 3}
+--- !u!1 &568842815434544832 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8608184945051845023, guid: 2b7a00a99e1548149bb5b8869c29548b,
+    type: 3}
+  m_PrefabInstance: {fileID: 8111692249884792671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7597608529083928146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568842815434544832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04aaf104a7c15fa4eb2ed02159b408bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  dashSpeed: 0
+  dashTime: 0
+  shootDelay: 0
+  swingDelay: 0
+  healthText: {fileID: 2807785438199265324}
+  ammoText: {fileID: 6188642937338787937}
+  bullet: {fileID: 395185365152040421, guid: 59a2e1ba706a3f94b91f4feff7b08246, type: 3}
+  rayObj: {fileID: 9050477780924039181}
+  MeleeBox: {fileID: 1319905487855801075}
+  hasGun: 1
+  knifeMode: 1
+  shots: 8
+  OriginalShots: 0
+  StaminaBar: {fileID: 4817033110903395261}
+  stamina: 50
+  maxStamina: 50
+  boostCost: 10
+  normSpeed: 0
 --- !u!4 &914018700102863994 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8952516374972734245, guid: 2b7a00a99e1548149bb5b8869c29548b,

@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
     private InputAction movement;
     private InputAction dash;
     private InputAction pow;
+    private Animator anim;
+    public GameObject playerRig;
 
     private Vector3 starting, dashDir, respawn;
 
@@ -61,17 +63,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {   
-        prb = GetComponent<Rigidbody>();
+        //prb = GetComponent<Rigidbody>();
         movePlayer = new NewControls();
         starting = transform.position;
         shooting = false;
         OriginalShots = shots;
         maxHealth = health;
         normSpeed = moveSpeed;
+
         bulletChance = false;
         regularShooting = true;
 
 
+
+        anim = playerRig.GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -81,6 +86,7 @@ public class PlayerMovement : MonoBehaviour
         movement.Enable();
 
         //set up Shooting
+
         dash = movePlayer.Player.Dash;
         dash.Enable();
         dash.performed += DodgeRoll;
@@ -197,11 +203,15 @@ public class PlayerMovement : MonoBehaviour
         {
             //Ranged Attack
             Gunshots();
+            print("I'm shooting");
+            anim.SetTrigger("isShooting");
         }
         else
         {
             //Melee attack
             HomeRun();
+            print("I'm whacking");
+            anim.SetTrigger("isWhacking");
         }
     }
 
@@ -285,6 +295,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isSprinting)
         {
+            anim.SetBool("isSprinting", true);
             moveSpeed = dashSpeed;
             stamina -= boostCost * Time.deltaTime;
             if (stamina < 0)
@@ -298,7 +309,10 @@ public class PlayerMovement : MonoBehaviour
             recharge = StartCoroutine(RechargeStamina());
         }
         else
+        {
             moveSpeed = normSpeed;
+            anim.SetBool("isSprinting", false);
+        }
         transform.position += new Vector3(moveDirection.x, 0, moveDirection.y) * Time.deltaTime * moveSpeed;
     }
 
