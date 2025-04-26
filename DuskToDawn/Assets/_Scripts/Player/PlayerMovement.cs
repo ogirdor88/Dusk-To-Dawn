@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     //Mo Edits
     //[SerializeField]
     public float dashSpeed, dashTime, shootDelay, swingDelay;
+    //public GameObject PlayerCanvasThing;
 
     [SerializeField]
     private TMP_Text healthText, ammoText;
@@ -132,13 +133,16 @@ public class PlayerMovement : MonoBehaviour
             PlayerTP.flag3 = true;*/
 
             SceneManager.LoadScene("Game_Over_Scene");
+            //this.gameObject.SetActive(true);
         }
+
+        
         //if(!dashing)
         //{
-            
 
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit))
@@ -447,5 +451,17 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = respawn;
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteKey("FasterDash");
+        PlayerPrefs.DeleteKey("FasterKey");
+        PlayerPrefs.DeleteKey("GlassTrap");
+        PlayerPrefs.DeleteKey("MoreStamina");
+        PlayerPrefs.DeleteKey("MoreAmmo");
+        PlayerPrefs.DeleteKey("ZombieAmmo");
+        PlayerPrefs.DeleteKey("Bullet");
+        PlayerPrefs.DeleteKey("Instakill");
     }
 }

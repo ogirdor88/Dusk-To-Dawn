@@ -7,6 +7,9 @@ public class SurvivalistUpgrades : MonoBehaviour
     [SerializeField]
     private GameObject playerObject;
 
+    //[SerializeField]
+    public GameObject button1, button2, button3, button4;
+
     [SerializeField]
     private GameObject checkenemy;
 
@@ -19,6 +22,7 @@ public class SurvivalistUpgrades : MonoBehaviour
 
     public void IncreaseHealth()
     {
+        Destroy(button1);
         PlayerMovement.health += 25f;
         PlayerMovement.maxHealth += 25f;
     }

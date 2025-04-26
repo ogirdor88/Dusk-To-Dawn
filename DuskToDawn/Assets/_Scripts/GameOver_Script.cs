@@ -14,13 +14,31 @@ public class GameOver_Script : MonoBehaviour
 
     public void Restart()
     {
+        PlayerTP.level1flag = true;
         Time.timeScale = 1;
+        PlayerPrefs.DeleteKey("FasterDash");
+        PlayerPrefs.DeleteKey("FasterKey");
+        PlayerPrefs.DeleteKey("GlassTrap");
+        PlayerPrefs.DeleteKey("MoreStamina");
+        PlayerPrefs.DeleteKey("MoreAmmo");
+        PlayerPrefs.DeleteKey("ZombieAmmo");
+        PlayerPrefs.DeleteKey("Bullet");
+        PlayerPrefs.DeleteKey("Instakill");
         PlayerMovement.health = 100;
-        SceneManager.LoadScene("Level One");
+        SceneManager.LoadScene("TEMPStartingScreen");
+        //GameObject.FindWithTag("Player").SetActive(true);
     }
 
     public void Exit()
     {
+        PlayerPrefs.DeleteKey("FasterDash");
+        PlayerPrefs.DeleteKey("FasterKey");
+        PlayerPrefs.DeleteKey("GlassTrap");
+        PlayerPrefs.DeleteKey("MoreStamina");
+        PlayerPrefs.DeleteKey("MoreAmmo");
+        PlayerPrefs.DeleteKey("ZombieAmmo");
+        PlayerPrefs.DeleteKey("Bullet");
+        PlayerPrefs.DeleteKey("Instakill");
         Application.Quit();
     }
 }
