@@ -13,7 +13,7 @@ public class RatFollow : MonoBehaviour
     private bool attackPlayer;
 
     [SerializeField]
-    private int health = 8;
+    private int health = 1;
     public CustomTrigger bodyTrigger;
     public CustomTrigger attackTrigger;
 
@@ -37,17 +37,17 @@ public class RatFollow : MonoBehaviour
 
         if (health <= 0)
         {
-            Experience.currentEXP += 5;
+            Experience.currentEXP += 4;
             Destroy(this.gameObject);
         }
     }
 
     private void OnbodyTriggerEntered(Collider other)
     {
-        if (other.tag == "Bullet")
+        /*if (other.tag == "Bullet")
         {
             health -= 4;
-        }
+        }*/
         if (other.tag == "Melee")
         {
             health -= 1;

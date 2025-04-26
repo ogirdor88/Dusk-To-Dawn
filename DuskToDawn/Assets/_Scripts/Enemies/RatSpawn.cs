@@ -15,6 +15,9 @@ public class RatSpawn : MonoBehaviour
 
     public CustomTrigger bodyTrigger;
     public CustomTrigger attackTrigger;
+    public List<GameObject> ratlist;
+    private GameObject newrat;
+
 
     private void Awake()
     {
@@ -41,7 +44,10 @@ public class RatSpawn : MonoBehaviour
     private IEnumerator SpawnRat()
     {
         canRat = true;
-        Instantiate(rat, transform.position, transform.rotation);
+        //Instantiate(rat, transform.position, transform.rotation);
+        newrat = Instantiate(rat, transform.position, transform.rotation);
+        newrat.transform.SetParent(transform);
+        ratlist.Add(newrat);
         yield return new WaitForSeconds(spawnDelay);
         canRat = false;
     }

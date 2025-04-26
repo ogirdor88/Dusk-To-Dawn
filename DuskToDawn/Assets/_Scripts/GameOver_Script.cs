@@ -15,12 +15,12 @@ public class GameOver_Script : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1;
+        PlayerMovement.health = 100;
         SceneManager.LoadScene("Level One");
     }
 
     public void Exit()
     {
-        Time.timeScale = 1;
-        SceneManager.LoadScene("TEMPStartingScreen");
+        Application.Quit();
     }
 }

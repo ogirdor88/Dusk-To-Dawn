@@ -30,10 +30,10 @@ public class BulletMove : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        if (other.tag == "Rat")
+        /*if (other.tag == "Rat")
         {
             Destroy(this.gameObject);
-        }
+        }*/
         if (other.tag == "RatKing")
         {
             Destroy(this.gameObject);

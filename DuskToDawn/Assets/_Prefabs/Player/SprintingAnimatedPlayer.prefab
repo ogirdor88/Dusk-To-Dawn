@@ -10,13 +10,28 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 241495347201174976, guid: 20a1203dbfd4a6b4d9835ac035c951a2,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 241495347201174976, guid: 20a1203dbfd4a6b4d9835ac035c951a2,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 241495347201174976, guid: 20a1203dbfd4a6b4d9835ac035c951a2,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 241495347201174976, guid: 20a1203dbfd4a6b4d9835ac035c951a2,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.056596532
       objectReference: {fileID: 0}
     - target: {fileID: 241495347201174976, guid: 20a1203dbfd4a6b4d9835ac035c951a2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.81
+      value: 1.65
       objectReference: {fileID: 0}
     - target: {fileID: 241495347201174976, guid: 20a1203dbfd4a6b4d9835ac035c951a2,
         type: 3}
@@ -65,6 +80,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 8f7bc395d601939489c09174d44da51a, type: 2}
     - target: {fileID: 2265462476421806421, guid: 20a1203dbfd4a6b4d9835ac035c951a2,
         type: 3}
+      propertyPath: knifeMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2265462476421806421, guid: 20a1203dbfd4a6b4d9835ac035c951a2,
+        type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -81,7 +101,7 @@ PrefabInstance:
     - target: {fileID: 3269078918625505795, guid: 20a1203dbfd4a6b4d9835ac035c951a2,
         type: 3}
       propertyPath: m_Name
-      value: SprintingPlayer Variant
+      value: SprintingAnimatedPlayer
       objectReference: {fileID: 0}
     - target: {fileID: 6993291763866392698, guid: 20a1203dbfd4a6b4d9835ac035c951a2,
         type: 3}
@@ -129,7 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db90c83c3b85ef8468747dd52702ff8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRig: {fileID: 6123092539229642484}
+  characterRig: {fileID: 6123092539229642484}
   maxSpeed: 0
 --- !u!1 &6123092539229642484 stripped
 GameObject:

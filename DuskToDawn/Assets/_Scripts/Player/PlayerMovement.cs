@@ -10,6 +10,7 @@ using UnityEngine.Rendering.Universal;
 //using static UnityEditor.Searcher.SearcherWindow.Alignment;
 using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction movement;
     private InputAction dash;
     private InputAction pow;
+    private InputAction swap;
     private Animator anim;
     public GameObject playerRig;
 
@@ -60,6 +62,9 @@ public class PlayerMovement : MonoBehaviour
     public float stamina, maxStamina, boostCost, normSpeed;
     private Coroutine recharge;
 
+    [SerializeField]
+    private GameObject Gun, Melee;
+
 
     private void Awake()
     {   
@@ -96,6 +101,11 @@ public class PlayerMovement : MonoBehaviour
         pow = movePlayer.Player.Attack;
         pow.Enable();
         pow.performed += DamageTime;
+
+        //set up the attack button
+        swap = movePlayer.Player.Swap;
+        swap.Enable();
+        swap.performed += ChangeWeapon;
     }
 
     private void OnDisable()
@@ -115,11 +125,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (health <= 0)
         {
-            transform.position = starting;
+            /*transform.position = starting;
             health = 100;
             PlayerTP.flag = true;
             PlayerTP.flag2 = true;
-            PlayerTP.flag3 = true;
+            PlayerTP.flag3 = true;*/
+
+            SceneManager.LoadScene("Game_Over_Scene");
         }
         //if(!dashing)
         //{
@@ -149,6 +161,17 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(rayObj.transform.position, fwd, out objectHit, 10))
         {
 
+        }
+
+        if(knifeMode)
+        {
+            Melee.SetActive(true);
+            Gun.SetActive(false);
+        }
+        else
+        {
+            Melee.SetActive(false);
+            Gun.SetActive(true);
         }
     }
 
@@ -273,6 +296,13 @@ public class PlayerMovement : MonoBehaviour
         swinging = false;
     }
 
+    private void ChangeWeapon(InputAction.CallbackContext context)
+    {
+        //swap weapons
+        knifeMode = !knifeMode;
+
+    }
+
     #endregion
 
     #region Sprinting
@@ -339,6 +369,7 @@ public class PlayerMovement : MonoBehaviour
         {
             shots = OriginalShots;
             hasGun = true;
+            knifeMode = false;
             Destroy(other.gameObject);
         }
 

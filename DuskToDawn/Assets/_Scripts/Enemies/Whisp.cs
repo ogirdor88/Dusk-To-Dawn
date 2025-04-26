@@ -15,7 +15,8 @@ public class Whisp : MonoBehaviour
     private bool shooting;
     private bool lockon;
 
-    private int health = 8;
+    private int health;
+    private int maxh = 8;
 
     public CustomTrigger detectionTrigger;
     public CustomTrigger bodyTrigger;
@@ -41,23 +42,26 @@ public class Whisp : MonoBehaviour
         shooting = false;
         lockon = false;
 
+        health = maxh;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(lockon)
+        /*if(lockon)
         {
             anim.SetTrigger("Attack");
             Attack();
-        }
-        //Attack();
+        }*/
+        
+
+        Attack();
         if (health <= 0)
         {
-            Experience.currentEXP += 5;
+            Experience.currentEXP += 6;
             Destroy(this.gameObject);
         }
-        /*Ray ray;
+        Ray ray;
         RaycastHit objectHit;
         Vector3 fwd = rayObj.transform.TransformDirection(Vector3.forward) *50;
         Debug.DrawRay(rayObj.transform.position, fwd , Color.green);
@@ -73,7 +77,7 @@ public class Whisp : MonoBehaviour
                     StartCoroutine(Shooting());
                 }
             }
-        }*/
+        }
     }
 
     //when the player gets in range the whisp will begin firing projectiles at them
@@ -101,12 +105,20 @@ public class Whisp : MonoBehaviour
         {
             health -= 4;
             //teleport the whisp
-            RandTeleport();
+            //RandTeleport();
+            if (health <= (maxh / 2))
+            {
+                RandTeleport();
+            }
         }
         if (other.tag == "Melee")
         {
             health -= 1;
-            RandTeleport();
+            //RandTeleport();
+            if (health <= (maxh / 2))
+            {
+                RandTeleport();
+            }
         }
     }
 
@@ -123,10 +135,10 @@ public class Whisp : MonoBehaviour
     {
         transform.LookAt(target.transform.position);
         //shoot the player
-        if (!shooting)
+        /*if (!shooting)
         {
             StartCoroutine(Shooting());
-        }
+        }*/
     }
 
     private IEnumerator Shooting()
