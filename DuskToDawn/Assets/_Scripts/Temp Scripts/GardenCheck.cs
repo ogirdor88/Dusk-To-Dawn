@@ -50,5 +50,17 @@ public class GardenCheck : MonoBehaviour
             Destroy(WeaponUp.GetComponent<WeaponUpgrade>().button4);
 
         }
+
+        if (PlayerPrefs.GetString("Health1") == "Got")
+        {
+            Destroy(SurvivalUp.GetComponent<SurvivalistUpgrades>().button1);
+
+        }
+
+        if (PlayerPrefs.GetString("Health2") == "Got")
+        {
+            Destroy(SurvivalUp.GetComponent<SurvivalistUpgrades>().button2);
+
+        }
     }
 }

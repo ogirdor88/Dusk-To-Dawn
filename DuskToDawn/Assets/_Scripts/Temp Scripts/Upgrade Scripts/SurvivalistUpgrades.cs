@@ -22,11 +22,28 @@ public class SurvivalistUpgrades : MonoBehaviour
 
     public void IncreaseHealth()
     {
-        Destroy(button1);
-        PlayerMovement.health += 25f;
-        PlayerMovement.maxHealth += 25f;
+        if (Experience.currentLVL >= 1)
+        {
+            Destroy(button1);
+            PlayerMovement.health += 25f;
+            PlayerMovement.maxHealth += 25f;
+            Experience.currentLVL -= 1;
+            PlayerPrefs.SetString("Health1", "Got");
+        }
     }
 
-   
+    public void IncreaseHealth2()
+    {
+        if (Experience.currentLVL >= 2)
+        {
+            Destroy(button2);
+            PlayerMovement.health += 25f;
+            PlayerMovement.maxHealth += 25f;
+            Experience.currentLVL -= 2;
+            PlayerPrefs.SetString("Health2", "Got");
+        }
+    }
+
+
 
 }

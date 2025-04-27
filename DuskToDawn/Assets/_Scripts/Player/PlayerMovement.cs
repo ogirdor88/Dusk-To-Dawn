@@ -463,5 +463,7 @@ public class PlayerMovement : MonoBehaviour
         PlayerPrefs.DeleteKey("ZombieAmmo");
         PlayerPrefs.DeleteKey("Bullet");
         PlayerPrefs.DeleteKey("Instakill");
+        PlayerPrefs.DeleteKey("Health1");
+        PlayerPrefs.DeleteKey("Health2");
     }
 }

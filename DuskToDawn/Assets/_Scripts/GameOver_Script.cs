@@ -24,6 +24,8 @@ public class GameOver_Script : MonoBehaviour
         PlayerPrefs.DeleteKey("ZombieAmmo");
         PlayerPrefs.DeleteKey("Bullet");
         PlayerPrefs.DeleteKey("Instakill");
+        PlayerPrefs.DeleteKey("Health1");
+        PlayerPrefs.DeleteKey("Health2");
         PlayerMovement.health = 100;
         SceneManager.LoadScene("TEMPStartingScreen");
         //GameObject.FindWithTag("Player").SetActive(true);
@@ -39,6 +41,8 @@ public class GameOver_Script : MonoBehaviour
         PlayerPrefs.DeleteKey("ZombieAmmo");
         PlayerPrefs.DeleteKey("Bullet");
         PlayerPrefs.DeleteKey("Instakill");
+        PlayerPrefs.DeleteKey("Health1");
+        PlayerPrefs.DeleteKey("Health2");
         Application.Quit();
     }
 }
