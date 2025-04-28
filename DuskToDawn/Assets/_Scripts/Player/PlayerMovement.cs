@@ -21,6 +21,10 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     public GameObject playerRig;
 
+    //Weapon
+    public GameObject Bat;
+    public GameObject Gun;
+
     private Vector3 starting, dashDir, respawn;
 
     public float moveSpeed;
@@ -67,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
         maxHealth = health;
         normSpeed = moveSpeed;
         anim = playerRig.GetComponent<Animator>();
+        Gun.SetActive(false);
     }
 
     private void OnEnable()
@@ -208,6 +213,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!shooting)
         {
+            Bat.SetActive(false);
             shots--;
             if(shots > 0)
             {
@@ -217,6 +223,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 shots = 0;
                 hasGun = false;
+                Gun.SetActive(false);
             }
         }
     }
@@ -233,6 +240,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!swinging)
         {
+            Bat.SetActive(true);
             StartCoroutine(MeleeSwing());
         }
     }
@@ -310,6 +318,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(other.tag == "Ammo")
         {
+            Gun.SetActive(true);
             shots = OriginalShots;
             hasGun = true;
             Destroy(other.gameObject);
