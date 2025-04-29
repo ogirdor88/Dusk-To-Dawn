@@ -433,7 +433,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.8, y: 1, z: 3.01}
-  m_LocalScale: {x: 48.008884, y: 3.4045, z: 1}
+  m_LocalScale: {x: 22.42, y: 3.4045, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -924,6 +924,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1073990131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2236294348684255445, guid: 39527742d13bc054bac668d794c9f56a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4974248906658780297}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1155743535
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,6 +1943,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2713617887288789713, guid: 7cfcb32c6de0cec4ea45536d476538a4,
+        type: 3}
+      propertyPath: ZombieRig
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7727626794359826351, guid: 7cfcb32c6de0cec4ea45536d476538a4,
         type: 3}
       propertyPath: m_Name
@@ -2396,6 +2407,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4260480185677985976, guid: 39527742d13bc054bac668d794c9f56a,
         type: 3}
+      propertyPath: rayObj
+      value: 
+      objectReference: {fileID: 1073990131}
+    - target: {fileID: 4260480185677985976, guid: 39527742d13bc054bac668d794c9f56a,
+        type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 0}
@@ -2462,7 +2478,7 @@ PrefabInstance:
     - target: {fileID: 8951431787952745204, guid: 39527742d13bc054bac668d794c9f56a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
