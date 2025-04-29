@@ -38,9 +38,9 @@ public class BulletMove : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
-        if (other.name == "Wall" ||  other.name == "Trim" || other.name == "Corner_Wall_Type2")
+        if (other.tag == "wall")
         {
+            Debug.Log("Wall");
             Destroy(this.gameObject);
         }
     }
