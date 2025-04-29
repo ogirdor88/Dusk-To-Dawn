@@ -23,4 +23,10 @@ public class StartingScreenUI : MonoBehaviour
         infoPanel.SetActive(false);
     }
 
+    public void thequitbutton()
+    {
+        Application.Quit();
+        PlayerPrefs.DeleteAll();
+    }
+
 }

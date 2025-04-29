@@ -5,14 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class LevelGardenLevel : MonoBehaviour
 {
-    public int level;
-    public bool lvlflag;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
-            SceneManager.LoadScene(level);
+        { 
+            SceneManager.LoadScene(PlayerPrefs.GetInt("LevelCounter"));
         }
     }
 

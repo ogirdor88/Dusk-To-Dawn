@@ -9,6 +9,8 @@ using UnityEngine.Rendering.Universal;
 //using UnityEditor.VersionControl;
 //using static UnityEditor.Searcher.SearcherWindow.Alignment;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,23 +20,24 @@ public class PlayerMovement : MonoBehaviour
     private InputAction movement;
     private InputAction dash;
     private InputAction pow;
+    private InputAction swap;
     private Animator anim;
     public GameObject playerRig;
-
-    //Weapon
-    public GameObject Bat;
-    public GameObject Gun;
 
     private Vector3 starting, dashDir, respawn;
 
     public float moveSpeed;
     public static float health = 100;
+    private int coinflip;
+    public static bool bulletChance;
+    public static bool regularShooting;
 
     public static float maxHealth;
 
     //Mo Edits
     //[SerializeField]
     public float dashSpeed, dashTime, shootDelay, swingDelay;
+    //public GameObject PlayerCanvasThing;
 
     [SerializeField]
     private TMP_Text healthText, ammoText;
@@ -60,6 +63,9 @@ public class PlayerMovement : MonoBehaviour
     public float stamina, maxStamina, boostCost, normSpeed;
     private Coroutine recharge;
 
+    [SerializeField]
+    private GameObject Gun, Melee;
+
 
     private void Awake()
     {   
@@ -70,8 +76,13 @@ public class PlayerMovement : MonoBehaviour
         OriginalShots = shots;
         maxHealth = health;
         normSpeed = moveSpeed;
+
+        bulletChance = false;
+        regularShooting = true;
+
+
+
         anim = playerRig.GetComponent<Animator>();
-        Gun.SetActive(false);
     }
 
     private void OnEnable()
@@ -91,6 +102,11 @@ public class PlayerMovement : MonoBehaviour
         pow = movePlayer.Player.Attack;
         pow.Enable();
         pow.performed += DamageTime;
+
+        //set up the attack button
+        swap = movePlayer.Player.Swap;
+        swap.Enable();
+        swap.performed += ChangeWeapon;
     }
 
     private void OnDisable()
@@ -110,17 +126,23 @@ public class PlayerMovement : MonoBehaviour
 
         if (health <= 0)
         {
-            transform.position = starting;
+            /*transform.position = starting;
             health = 100;
             PlayerTP.flag = true;
             PlayerTP.flag2 = true;
+            PlayerTP.flag3 = true;*/
+
+            SceneManager.LoadScene("Game_Over_Scene");
+            //this.gameObject.SetActive(true);
         }
+
+        
         //if(!dashing)
         //{
-            
 
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit))
@@ -143,6 +165,17 @@ public class PlayerMovement : MonoBehaviour
         if (Physics.Raycast(rayObj.transform.position, fwd, out objectHit, 10))
         {
 
+        }
+
+        if(knifeMode)
+        {
+            Melee.SetActive(true);
+            Gun.SetActive(false);
+        }
+        else
+        {
+            Melee.SetActive(false);
+            Gun.SetActive(true);
         }
     }
 
@@ -213,9 +246,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!shooting)
         {
-            Bat.SetActive(false);
-            shots--;
-            if(shots > 0)
+            if (bulletChance) {
+                coinflip = Random.Range(1, 10);
+                if (coinflip % 2 == 0)
+                {
+                    StartCoroutine(Shooting());
+                }
+                else
+                {
+                    shots--;
+                }
+            }
+
+            if (regularShooting)
+            {
+                shots--;
+            }
+
+            if (shots > 0)
             {
                 StartCoroutine(Shooting());
             }
@@ -223,7 +271,6 @@ public class PlayerMovement : MonoBehaviour
             {
                 shots = 0;
                 hasGun = false;
-                Gun.SetActive(false);
             }
         }
     }
@@ -240,7 +287,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!swinging)
         {
-            Bat.SetActive(true);
             StartCoroutine(MeleeSwing());
         }
     }
@@ -252,6 +298,13 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(swingDelay);
         MeleeBox.SetActive(false);
         swinging = false;
+    }
+
+    private void ChangeWeapon(InputAction.CallbackContext context)
+    {
+        //swap weapons
+        knifeMode = !knifeMode;
+
     }
 
     #endregion
@@ -318,9 +371,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if(other.tag == "Ammo")
         {
-            Gun.SetActive(true);
             shots = OriginalShots;
             hasGun = true;
+            knifeMode = false;
             Destroy(other.gameObject);
         }
 
@@ -398,5 +451,19 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = respawn;
         }
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteKey("FasterDash");
+        PlayerPrefs.DeleteKey("FasterKey");
+        PlayerPrefs.DeleteKey("GlassTrap");
+        PlayerPrefs.DeleteKey("MoreStamina");
+        PlayerPrefs.DeleteKey("MoreAmmo");
+        PlayerPrefs.DeleteKey("ZombieAmmo");
+        PlayerPrefs.DeleteKey("Bullet");
+        PlayerPrefs.DeleteKey("Instakill");
+        PlayerPrefs.DeleteKey("Health1");
+        PlayerPrefs.DeleteKey("Health2");
     }
 }

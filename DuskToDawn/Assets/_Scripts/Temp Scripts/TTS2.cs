@@ -9,7 +9,7 @@ public class TTS2 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Garden 1");
+            SceneManager.LoadScene("Garden");
             //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

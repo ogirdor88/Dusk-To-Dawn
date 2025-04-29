@@ -12,7 +12,8 @@ public class Zombie : MonoBehaviour
 
 
     private bool followPlayer, attackPlayer;
-
+    
+    [SerializeField]
     private int health = 8;
     public static bool zombieUpgrade;
 
@@ -23,6 +24,9 @@ public class Zombie : MonoBehaviour
     //ZombieAnimation
     private Animator anim;
     public GameObject ZombieRig;
+
+    //Zombie Instakill
+    public static bool instakill = false;
 
     private void Awake()
     {
@@ -50,6 +54,8 @@ public class Zombie : MonoBehaviour
             anim.SetBool("isWalking", true);
             Getem();
         }
+
+
 
 
         if(health <= 0)
@@ -95,7 +101,17 @@ public class Zombie : MonoBehaviour
     {
         if (other.tag == "Bullet")
         {
-            health -= 4;
+            if (instakill)
+            {
+                int randy = Random.Range(0, 20);
+                if (randy % 5 == 0) {
+                    health -= 20;
+                }
+            }
+            else
+            {
+                health -= 4;
+            }
         }
         if (other.tag == "Melee")
         {

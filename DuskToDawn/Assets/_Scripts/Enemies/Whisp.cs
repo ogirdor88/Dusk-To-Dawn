@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Whisp : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject target, bullet, bulletSpawn, attackbox;
+    private GameObject target, bullet, bulletSpawn, attackbox,rayObj;
 
     [SerializeField]
     private float attackDelay;
@@ -14,7 +15,8 @@ public class Whisp : MonoBehaviour
     private bool shooting;
     private bool lockon;
 
-    private int health = 8;
+    private int health;
+    private int maxh = 8;
 
     public CustomTrigger detectionTrigger;
     public CustomTrigger bodyTrigger;
@@ -34,26 +36,47 @@ public class Whisp : MonoBehaviour
     void Start()
     {
         detectionTrigger.EnteredTrigger += OndetectionTriggerEntered;
-        //detectionTrigger.ExitedTrigger += OndetectionTriggerExited;
+        detectionTrigger.ExitedTrigger += OndetectionTriggerExited;
         bodyTrigger.EnteredTrigger += OnbodyTriggerEntered;
         //bodyTrigger.ExitedTrigger -= OnbodyTriggerExited;
         shooting = false;
         lockon = false;
 
+        health = maxh;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(lockon)
+        /*if(lockon)
         {
             anim.SetTrigger("Attack");
             Attack();
-        }
+        }*/
+        
+
+        Attack();
         if (health <= 0)
         {
-            Experience.currentEXP += 5;
+            Experience.currentEXP += 6;
             Destroy(this.gameObject);
+        }
+        Ray ray;
+        RaycastHit objectHit;
+        Vector3 fwd = rayObj.transform.TransformDirection(Vector3.forward) *50;
+        Debug.DrawRay(rayObj.transform.position, fwd , Color.green);
+        if (Physics.Raycast(attackbox.transform.position, fwd, out objectHit))
+        {
+            if(objectHit.transform.CompareTag("Player"))
+            {
+                Debug.Log("looking at player");
+                transform.LookAt(target.transform.position);
+                //shoot the player
+                if (!shooting)
+                {
+                    StartCoroutine(Shooting());
+                }
+            }
         }
     }
 
@@ -66,6 +89,14 @@ public class Whisp : MonoBehaviour
             lockon = true;
         }
     }
+    private void OndetectionTriggerExited(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Debug.Log("whereHeGo");
+            lockon = false;
+        }
+    }
 
     //if the whisp is hit it will lose health then teleport
     private void OnbodyTriggerEntered(Collider other)
@@ -74,12 +105,20 @@ public class Whisp : MonoBehaviour
         {
             health -= 4;
             //teleport the whisp
-            RandTeleport();
+            //RandTeleport();
+            if (health <= (maxh / 2))
+            {
+                RandTeleport();
+            }
         }
         if (other.tag == "Melee")
         {
             health -= 1;
-            RandTeleport();
+            //RandTeleport();
+            if (health <= (maxh / 2))
+            {
+                RandTeleport();
+            }
         }
     }
 
@@ -96,10 +135,10 @@ public class Whisp : MonoBehaviour
     {
         transform.LookAt(target.transform.position);
         //shoot the player
-        if (!shooting)
+        /*if (!shooting)
         {
             StartCoroutine(Shooting());
-        }
+        }*/
     }
 
     private IEnumerator Shooting()
