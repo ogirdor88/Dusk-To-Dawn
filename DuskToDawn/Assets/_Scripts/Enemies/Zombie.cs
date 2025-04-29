@@ -5,7 +5,7 @@ using UnityEngine;
 public class Zombie : MonoBehaviour
 {
     [SerializeField]
-    private GameObject target, attackBox, followrange, ammoBoxDrop;
+    private GameObject target, attackBox, followrange, ammoBoxDrop, rayObj;
 
     [SerializeField]
     private float speed, attackDelay;
@@ -30,7 +30,7 @@ public class Zombie : MonoBehaviour
 
     private void Awake()
     {
-        detectionTrigger.EnteredTrigger += OndetectionTriggerEntered;
+        //detectionTrigger.EnteredTrigger += OndetectionTriggerEntered;
         //detectionTrigger.ExitedTrigger += OndetectionTriggerExited;
         bodyTrigger.EnteredTrigger += OnbodyTriggerEntered;
         //bodyTrigger.ExitedTrigger -= OnbodyTriggerExited;
@@ -55,10 +55,10 @@ public class Zombie : MonoBehaviour
             Getem();
         }
 
+        //look at the player
+        transform.LookAt(target.transform.position);
 
-
-
-        if(health <= 0)
+        if (health <= 0)
         {
             Experience.currentEXP += 5;
             Destroy(this.gameObject);
@@ -69,6 +69,21 @@ public class Zombie : MonoBehaviour
         }
 
         anim.SetBool("isWalking", false);
+
+        Ray ray;
+        RaycastHit objectHit;
+        Vector3 fwd = rayObj.transform.TransformDirection(Vector3.forward) * 50;
+        Debug.DrawRay(rayObj.transform.position, fwd, Color.green);
+        if (Physics.Raycast(attackBox.transform.position, fwd, out objectHit))
+        {
+            if (objectHit.transform.CompareTag("Player"))
+            {
+                Debug.Log("looking at player");
+                transform.LookAt(target.transform.position);
+                //shoot the player
+                followPlayer = true;
+            }
+        }
     }
 
     private void Getem()
@@ -85,13 +100,13 @@ public class Zombie : MonoBehaviour
         }
     }
 
-    private void OndetectionTriggerEntered(Collider other)
+    /*private void OndetectionTriggerEntered(Collider other)
     {
         if (other.tag == "Player")
         {
             followPlayer = true;
         }
-    }
+    }*/
     /*private void OndetectionTriggerExited(Collider other)
     {
 
