@@ -13,7 +13,7 @@ public class BearTrap : MonoBehaviour
     private void Awake()
     {
         //for testing - set the color of the trap to differentiate objects
-        this.GetComponent<Renderer>().material.color = Color.green;
+        //this.GetComponent<Renderer>().material.color = Color.red;
 
         holding = false;
 
