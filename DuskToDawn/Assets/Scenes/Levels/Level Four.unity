@@ -26720,7 +26720,7 @@ PrefabInstance:
     - target: {fileID: 3269078918625505795, guid: 20a1203dbfd4a6b4d9835ac035c951a2,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5120353452377577032, guid: 20a1203dbfd4a6b4d9835ac035c951a2,
         type: 3}
@@ -52239,8 +52239,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.3322188, y: 0.4729652, z: 1.2896947}
+  m_Center: {x: 0.060288083, y: -0.2635174, z: -0.14484733}
 --- !u!23 &1784385305
 MeshRenderer:
   m_ObjectHideFlags: 0
