@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -11,6 +12,9 @@ public class Whisp : MonoBehaviour
 
     [SerializeField]
     private float attackDelay;
+
+    [SerializeField]
+    private List<GameObject> teleportList;
 
     private bool shooting;
     private bool lockon;
@@ -106,10 +110,12 @@ public class Whisp : MonoBehaviour
             health -= 4;
             //teleport the whisp
             //RandTeleport();
-            if (health <= (maxh / 2))
+            /*if (health <= (maxh / 2))
             {
-                RandTeleport();
-            }
+                //RandTeleport();
+                RandoTeleport();
+            }*/
+            RandoTeleport();
         }
         if (other.tag == "Melee")
         {
@@ -156,5 +162,14 @@ public class Whisp : MonoBehaviour
         attackbox.SetActive(false);
         yield return new WaitForSeconds(.5f);
         attackbox.SetActive(true);
+    }
+
+    private void RandoTeleport()
+    {
+        Debug.Log("ouch");
+        int randDist = Random.Range(0, teleportList.Count);
+        Vector3 teleTarget = new Vector3 (teleportList[randDist].transform.position.x, transform.position.y, teleportList[randDist].transform.position.z);
+
+        transform.position = teleTarget;
     }
 }
