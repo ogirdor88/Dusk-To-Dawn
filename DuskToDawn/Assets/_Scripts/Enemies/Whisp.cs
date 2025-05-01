@@ -20,7 +20,7 @@ public class Whisp : MonoBehaviour
     private bool lockon;
 
     private int health;
-    private int maxh = 16;
+    private int maxh = 8;
 
     public CustomTrigger detectionTrigger;
     public CustomTrigger bodyTrigger;
