@@ -115,10 +115,10 @@ public class Whisp : MonoBehaviour
         {
             health -= 1;
             //RandTeleport();
-            if (health <= (maxh / 2))
+           /* if (health <= (maxh / 2))
             {
                 RandTeleport();
-            }
+            }*/
         }
     }
 
