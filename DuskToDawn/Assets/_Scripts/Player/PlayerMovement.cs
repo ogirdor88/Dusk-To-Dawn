@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private InputAction dash;
     private InputAction pow;
     private InputAction swap;
+    private InputAction stop;
     private Animator anim;
     public GameObject playerRig;
 
@@ -31,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
     private int coinflip;
     public static bool bulletChance;
     public static bool regularShooting;
+    public static bool paused;
 
     public static float maxHealth;
 
@@ -107,6 +109,11 @@ public class PlayerMovement : MonoBehaviour
         swap = movePlayer.Player.Swap;
         swap.Enable();
         swap.performed += ChangeWeapon;
+
+        // set up the pause button
+        stop = movePlayer.Player.Pause;
+        stop.Enable();
+        stop.performed += TogglePause;
     }
 
     private void OnDisable()
@@ -370,7 +377,12 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-    private void OnTriggerEnter(Collider other)
+    private void TogglePause(InputAction.CallbackContext context)
+    {
+        paused = !paused;
+        Debug.Log("paused " + paused);
+    }
+        private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Ammo")
         {

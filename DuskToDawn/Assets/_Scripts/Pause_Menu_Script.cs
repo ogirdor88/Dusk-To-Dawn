@@ -6,21 +6,23 @@ using UnityEngine.SceneManagement;
 public class Pause_Menu_Script : MonoBehaviour
 {
     public GameObject PausePannel;
-    public GameObject VolumePannel;
 
     // Start is called before the first frame update
     void Start()
     {
         PausePannel.SetActive(false);
-        VolumePannel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab)) 
+        if (PlayerMovement.paused) 
         {
             Pause();
+        }
+        else
+        {
+            PausePannel.SetActive(false);
         }
     }
 
@@ -34,19 +36,9 @@ public class Pause_Menu_Script : MonoBehaviour
     public void Resume()
     {
         PausePannel.SetActive(false);
+        PlayerMovement.paused = false;
         Time.timeScale = 1;
     }
-
-    public void Volume()
-    {
-        VolumePannel.SetActive(true);
-    }
-
-    public void Back()
-    {
-        VolumePannel.SetActive(false);
-    }
-
     public void Restart()
     {
         Time.timeScale = 1;
