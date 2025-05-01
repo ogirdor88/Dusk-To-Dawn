@@ -271,6 +271,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 shots = 0;
                 hasGun = false;
+                knifeMode = true;
             }
         }
     }
@@ -326,28 +327,30 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Sprinting()
     {
-
-        if (isSprinting)
+        if(!BearTrap.holding)
         {
-            anim.SetBool("isSprinting", true);
-            moveSpeed = dashSpeed;
-            stamina -= boostCost * Time.deltaTime;
-            if (stamina < 0)
+            if (isSprinting)
             {
-                stamina = 0;
-                isSprinting = false;
+                anim.SetBool("isSprinting", true);
+                moveSpeed = dashSpeed;
+                stamina -= boostCost * Time.deltaTime;
+                if (stamina < 0)
+                {
+                    stamina = 0;
+                    isSprinting = false;
+                }
+                StaminaBar.fillAmount = stamina / maxStamina;
+                //boostText.text = "Boost: " + (int)stamina + "/" + (int)maxStamina;
+                if (recharge != null) StopCoroutine(recharge);
+                recharge = StartCoroutine(RechargeStamina());
             }
-            StaminaBar.fillAmount = stamina / maxStamina;
-            //boostText.text = "Boost: " + (int)stamina + "/" + (int)maxStamina;
-            if (recharge != null) StopCoroutine(recharge);
-            recharge = StartCoroutine(RechargeStamina());
-        }
-        else
-        {
-            moveSpeed = normSpeed;
-            anim.SetBool("isSprinting", false);
-        }
-        transform.position += new Vector3(moveDirection.x, 0, moveDirection.y) * Time.deltaTime * moveSpeed;
+            else
+            {
+                moveSpeed = normSpeed;
+                anim.SetBool("isSprinting", false);
+            }
+            transform.position += new Vector3(moveDirection.x, 0, moveDirection.y) * Time.deltaTime * moveSpeed;
+        }  
     }
 
     public IEnumerator RechargeStamina()
@@ -373,7 +376,7 @@ public class PlayerMovement : MonoBehaviour
         {
             shots = OriginalShots;
             hasGun = true;
-            knifeMode = false;
+            //knifeMode = false;
             Destroy(other.gameObject);
         }
 

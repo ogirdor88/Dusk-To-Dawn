@@ -7,7 +7,7 @@ public class BearTrap : MonoBehaviour
     [SerializeField]
     private float damage, holdTime;
 
-    private bool holding;
+    public static bool holding;
     private float playerspeed;
 
     private void Awake()
@@ -29,13 +29,13 @@ public class BearTrap : MonoBehaviour
         //start a timer for how long the player will be stuck in the trap
         if (other.tag == "Player")
         {
-            Debug.Log("Trapped");
+            Debug.Log("Trapped " + playerspeed );
             holding = true;
             PlayerMovement.health = PlayerMovement.health - damage;
             Debug.Log(PlayerMovement.health);
             if (holding)
             {
-                other.gameObject.transform.position = this.transform.position;
+                other.gameObject.transform.position = new Vector3( this.transform.position.x, other.transform.position.y, this.transform.position.z);
             }
             StartCoroutine(Grabbed());
         }

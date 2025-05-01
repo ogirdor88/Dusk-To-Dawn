@@ -819,6 +819,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1650601245}
+--- !u!1001 &662351812
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.788
+      objectReference: {fileID: 0}
+    - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 210803055317579102, guid: 0779bc16d8f2d3143b7782b483c45531,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7735584876274338915, guid: 0779bc16d8f2d3143b7782b483c45531,
+        type: 3}
+      propertyPath: m_Name
+      value: BearTrapWithAnim
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0779bc16d8f2d3143b7782b483c45531, type: 3}
 --- !u!1 &733714121
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,7 +2703,7 @@ PrefabInstance:
     - target: {fileID: 2217008749462451551, guid: 1142ebcc7ca891645a91e35e322797e8,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3041855202036199818, guid: 1142ebcc7ca891645a91e35e322797e8,
         type: 3}
@@ -3042,6 +3110,7 @@ SceneRoots:
   - {fileID: 1632345910}
   - {fileID: 1979529063}
   - {fileID: 8313299818054968888}
+  - {fileID: 662351812}
   - {fileID: 1380092399}
   - {fileID: 1483948687}
   - {fileID: 1789442417}

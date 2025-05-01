@@ -16,7 +16,7 @@ public class Whisp : MonoBehaviour
     [SerializeField]
     private List<GameObject> teleportList;
 
-    private bool shooting;
+    private bool shooting, hover;
     private bool lockon;
 
     private int health;
@@ -115,7 +115,15 @@ public class Whisp : MonoBehaviour
                 //RandTeleport();
                 RandoTeleport();
             }*/
-            RandoTeleport();
+            if(!hover)
+            {
+                RandoTeleport();
+            }
+            //else
+            //{
+
+            //}
+            
         }
         if (other.tag == "Melee")
         {
