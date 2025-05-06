@@ -11,6 +11,8 @@ public class GardenUpgradeTrigger : MonoBehaviour
         if (other.tag == "Player")
         {
             upgradeCanvas.SetActive(true);
+            GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().hasGun = false;
+            GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().knifeMode = false;
         }
     }
 
@@ -19,6 +21,7 @@ public class GardenUpgradeTrigger : MonoBehaviour
         if (other.tag == "Player")
         {
             upgradeCanvas.SetActive(false);
+            GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().knifeMode = true;
         }
     }
 }

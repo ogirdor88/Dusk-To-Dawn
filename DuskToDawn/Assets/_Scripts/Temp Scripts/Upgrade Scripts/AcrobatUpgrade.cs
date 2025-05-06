@@ -36,13 +36,17 @@ public class AcrobatUpgrade : MonoBehaviour
     public void GlassTrapDamageReduction()
     {
         if (Experience.currentLVL >= 2)
+        {
             GlassTrap.damage = 2; Destroy(button3); Experience.currentLVL -= 2; PlayerPrefs.SetString("GlassTrap", "Got");
+        }
     }
 
     public void FasterDash()
     {
-        if(Experience.currentLVL >= 1)
+        if (Experience.currentLVL >= 1)
+        {
             GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().dashSpeed = 11.5f; Destroy(button2); Experience.currentLVL -= 1; PlayerPrefs.SetString("FasterDash", "Got");
+        }
     }
 
     public void MoreMaxStamina()
