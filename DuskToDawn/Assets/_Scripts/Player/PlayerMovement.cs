@@ -85,6 +85,8 @@ public class PlayerMovement : MonoBehaviour
 
         anim = playerRig.GetComponent<Animator>();
 
+        anim.SetBool("isRunning", false);
+
         anim.SetBool("holdingGun", true);
     }
 
@@ -93,6 +95,8 @@ public class PlayerMovement : MonoBehaviour
         //set up movement
         movement = movePlayer.Player.Movement;
         movement.Enable();
+        movement.performed += isRunning;
+        movement.canceled += isRunning;
 
         //set up Shooting
 
@@ -328,6 +332,18 @@ public class PlayerMovement : MonoBehaviour
     }
 
     #endregion
+
+    private void isRunning(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+        }
+    }
 
     #region Sprinting
 
