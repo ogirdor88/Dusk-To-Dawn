@@ -6505,6 +6505,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 468744402}
     m_Modifications:
+    - target: {fileID: 6947829729034555270, guid: 1f6a35f94225e544a902e0324d14613f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8336311508394549691, guid: 1f6a35f94225e544a902e0324d14613f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6559,6 +6564,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Prop_DogCorpse_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717657756748479233, guid: 1f6a35f94225e544a902e0324d14613f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -24643,6 +24653,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 468744402}
     m_Modifications:
+    - target: {fileID: 6947829729034555270, guid: 1f6a35f94225e544a902e0324d14613f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8336311508394549691, guid: 1f6a35f94225e544a902e0324d14613f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24697,6 +24712,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Prop_DogCorpse_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717657756748479233, guid: 1f6a35f94225e544a902e0324d14613f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -27461,6 +27481,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 468744402}
     m_Modifications:
+    - target: {fileID: 6947829729034555270, guid: 1f6a35f94225e544a902e0324d14613f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8336311508394549691, guid: 1f6a35f94225e544a902e0324d14613f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -27515,6 +27540,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Prop_DogCorpse_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717657756748479233, guid: 1f6a35f94225e544a902e0324d14613f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -40499,7 +40529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1015757430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42168,6 +42198,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 468744402}
     m_Modifications:
+    - target: {fileID: 6947829729034555270, guid: 1f6a35f94225e544a902e0324d14613f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8336311508394549691, guid: 1f6a35f94225e544a902e0324d14613f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -42222,6 +42257,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Prop_DogCorpse_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717657756748479233, guid: 1f6a35f94225e544a902e0324d14613f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -76114,6 +76154,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 468744402}
     m_Modifications:
+    - target: {fileID: 6947829729034555270, guid: 1f6a35f94225e544a902e0324d14613f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8336311508394549691, guid: 1f6a35f94225e544a902e0324d14613f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -76168,6 +76213,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Prop_DogCorpse_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717657756748479233, guid: 1f6a35f94225e544a902e0324d14613f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -81865,6 +81915,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 468744402}
     m_Modifications:
+    - target: {fileID: 6947829729034555270, guid: 1f6a35f94225e544a902e0324d14613f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8336311508394549691, guid: 1f6a35f94225e544a902e0324d14613f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -81919,6 +81974,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Prop_DogCorpse_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717657756748479233, guid: 1f6a35f94225e544a902e0324d14613f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
