@@ -23,6 +23,7 @@ public class Pause_Menu_Script : MonoBehaviour
         else
         {
             PausePannel.SetActive(false);
+            Time.timeScale = 1;
         }
     }
 
@@ -38,6 +39,7 @@ public class Pause_Menu_Script : MonoBehaviour
         PausePannel.SetActive(false);
         PlayerMovement.paused = false;
         Time.timeScale = 1;
+        Debug.Log("Click");
     }
     public void Restart()
     {
