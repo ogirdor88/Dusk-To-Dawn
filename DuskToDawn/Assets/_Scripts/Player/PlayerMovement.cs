@@ -82,6 +82,8 @@ public class PlayerMovement : MonoBehaviour
         bulletChance = false;
         regularShooting = true;
 
+        paused = false;
+
 
 
         anim = playerRig.GetComponent<Animator>();
@@ -233,19 +235,22 @@ public class PlayerMovement : MonoBehaviour
     #region Attack
     private void DamageTime(InputAction.CallbackContext context )
     {
-        if(hasGun && !knifeMode)
+        if(!paused)
         {
-            //Ranged Attack
-            Gunshots();
-            print("I'm shooting");
-            anim.SetTrigger("isShooting");
-        }
-        else
-        {
-            //Melee attack
-            HomeRun();
-            print("I'm whacking");
-            anim.SetTrigger("isWhacking");
+            if (hasGun && !knifeMode)
+            {
+                //Ranged Attack
+                Gunshots();
+                print("I'm shooting");
+                anim.SetTrigger("isShooting");
+            }
+            else
+            {
+                //Melee attack
+                HomeRun();
+                print("I'm whacking");
+                anim.SetTrigger("isWhacking");
+            }
         }
     }
 

@@ -36,8 +36,8 @@ public class Pause_Menu_Script : MonoBehaviour
 
     public void Resume()
     {
-        PausePannel.SetActive(false);
         PlayerMovement.paused = false;
+        PausePannel.SetActive(false);
         Time.timeScale = 1;
         Debug.Log("Click");
     }
