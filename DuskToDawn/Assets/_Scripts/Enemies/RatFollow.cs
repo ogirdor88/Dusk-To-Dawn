@@ -17,6 +17,9 @@ public class RatFollow : MonoBehaviour
     public CustomTrigger bodyTrigger;
     public CustomTrigger attackTrigger;
 
+    private Animator anim;
+    public GameObject ratRig;
+
     private void Awake()
     {
         bodyTrigger.EnteredTrigger += OnbodyTriggerEntered;
@@ -27,6 +30,8 @@ public class RatFollow : MonoBehaviour
         attackBox.SetActive(false);
 
         target = GameObject.FindWithTag("Player");
+
+        anim = ratRig.GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()

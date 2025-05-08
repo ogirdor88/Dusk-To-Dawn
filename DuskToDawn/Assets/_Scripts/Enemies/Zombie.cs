@@ -25,6 +25,7 @@ public class Zombie : MonoBehaviour
     private Animator anim;
     public GameObject ZombieRig;
 
+
     //Zombie Instakill
     public static bool instakill = false;
 

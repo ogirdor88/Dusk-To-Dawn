@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
     public bool hasGun, knifeMode;
     public int shots;
     public int OriginalShots;
+    public GameObject gunObject, batObject;
 
     //Sprint Variables
     private bool isSprinting = false;
@@ -81,12 +82,14 @@ public class PlayerMovement : MonoBehaviour
 
         bulletChance = false;
         regularShooting = true;
-
         paused = false;
-
-
+        batObject.SetActive(false);
 
         anim = playerRig.GetComponent<Animator>();
+
+        anim.SetBool("isRunning", false);
+
+        anim.SetBool("holdingGun", true);
     }
 
     private void OnEnable()
@@ -94,6 +97,8 @@ public class PlayerMovement : MonoBehaviour
         //set up movement
         movement = movePlayer.Player.Movement;
         movement.Enable();
+        movement.performed += isRunning;
+        movement.canceled += isRunning;
 
         //set up Shooting
 
@@ -284,6 +289,8 @@ public class PlayerMovement : MonoBehaviour
                 shots = 0;
                 hasGun = false;
                 knifeMode = true;
+                gunObject.SetActive(false);
+                batObject.SetActive(true);
             }
         }
     }
@@ -317,10 +324,37 @@ public class PlayerMovement : MonoBehaviour
     {
         //swap weapons
         knifeMode = !knifeMode;
+        if (knifeMode)
+        {
+            gunObject.SetActive(false);
+            batObject.SetActive(true);
+            anim.SetBool("holdingGun", false);
+            anim.SetBool("holdingBat", true);
+        }
+
+        if (!knifeMode)
+        {
+            gunObject.SetActive(true);
+            batObject.SetActive(false);
+            anim.SetBool("holdingGun", true);
+            anim.SetBool("holdingBat", false);
+        }
 
     }
 
     #endregion
+
+    private void isRunning(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            anim.SetBool("isRunning", true);
+        }
+        else
+        {
+            anim.SetBool("isRunning", false);
+        }
+    }
 
     #region Sprinting
 
