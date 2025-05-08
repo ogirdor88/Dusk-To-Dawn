@@ -10,6 +10,11 @@ public class StartingScreenUI : MonoBehaviour
 
     public void Playgame()
     {
+        PlayerMovement.health = 100;
+        //PlayerMovement. = 100;
+        Experience.currentEXP = 0;
+        Experience.currentLVL = 0;
+        Experience.maxEXP = 5;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

@@ -49,10 +49,10 @@ public class RatFollow : MonoBehaviour
 
     private void OnbodyTriggerEntered(Collider other)
     {
-        /*if (other.tag == "Bullet")
+        if (other.tag == "Bullet")
         {
             health -= 4;
-        }*/
+        }
         if (other.tag == "Melee")
         {
             health -= 1;

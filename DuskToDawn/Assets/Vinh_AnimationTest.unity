@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -608,6 +608,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie - Copy
       objectReference: {fileID: 0}
+    - target: {fileID: 8951431787952745204, guid: 39527742d13bc054bac668d794c9f56a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 2243583946237625334, guid: 39527742d13bc054bac668d794c9f56a, type: 3}
@@ -630,6 +635,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Wisp - Copy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2217008749462451551, guid: 1142ebcc7ca891645a91e35e322797e8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3041855202036199818, guid: 1142ebcc7ca891645a91e35e322797e8,
         type: 3}
@@ -892,6 +902,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 118
   m_CollisionDetection: 0
+--- !u!1 &1980791411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5400273740357385836, guid: 2f2c3eb2284a3c545bd4375c882fefd3,
+    type: 3}
+  m_PrefabInstance: {fileID: 5269172339148472215}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2061879297845995475
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -954,6 +970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rat
+      objectReference: {fileID: 0}
+    - target: {fileID: 5614664321608671768, guid: 374030a306c201a42be9af47b17635fc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1091,6 +1112,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZombieHeadEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7506606101502593674, guid: 2f2c3eb2284a3c545bd4375c882fefd3,
+        type: 3}
+      propertyPath: rayObj
+      value: 
+      objectReference: {fileID: 1980791411}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

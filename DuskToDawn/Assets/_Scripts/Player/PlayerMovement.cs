@@ -509,15 +509,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        PlayerPrefs.DeleteKey("FasterDash");
-        PlayerPrefs.DeleteKey("FasterKey");
-        PlayerPrefs.DeleteKey("GlassTrap");
-        PlayerPrefs.DeleteKey("MoreStamina");
-        PlayerPrefs.DeleteKey("MoreAmmo");
-        PlayerPrefs.DeleteKey("ZombieAmmo");
-        PlayerPrefs.DeleteKey("Bullet");
-        PlayerPrefs.DeleteKey("Instakill");
-        PlayerPrefs.DeleteKey("Health1");
-        PlayerPrefs.DeleteKey("Health2");
+        PlayerPrefs.DeleteAll();
     }
 }

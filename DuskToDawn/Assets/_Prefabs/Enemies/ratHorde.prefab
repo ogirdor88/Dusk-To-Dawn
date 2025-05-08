@@ -321,10 +321,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 8
-  rat: {fileID: 1012051257643695329, guid: a7bdbc58022226a4ea9b8146cd366327, type: 3}
+  rat: {fileID: 5614664321608671768, guid: 374030a306c201a42be9af47b17635fc, type: 3}
   spawnDelay: 2
   bodyTrigger: {fileID: 4182485057217592615}
   attackTrigger: {fileID: 6967999849510596956}
+  ratlist: []
 --- !u!54 &2361611960974448880
 Rigidbody:
   m_ObjectHideFlags: 0

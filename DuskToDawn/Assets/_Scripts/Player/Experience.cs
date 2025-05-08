@@ -12,7 +12,7 @@ public class Experience : MonoBehaviour
     public static float currentEXP;
     public static float currentLVL;
     [SerializeField]
-    private float maxEXP;
+    public static float maxEXP = 5;
     private float prevLVL;
 
     [SerializeField]
